@@ -31,7 +31,7 @@ Time | Event | Speaker/facilitator
 6:00 | Dinner
 7:00 | Interest area small groups (from surveys)
 
-### Tuesday, August 29, 2017
+### Wednesday, August 30, 2017
 
 Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
