@@ -47,6 +47,23 @@ staticman:
 atom_feed:
   path                   : # blank (default) uses feed.xml
 
+
+# Collections
+collections:
+  tutorials:
+      output: true
+      permalink: /:collection/:path/
+# page defaults
+defaults:
+  # _tutorials
+  - scope:
+      path: ""
+      type: tutorials
+    values:
+      layout: single
+      author_profile: false
+      share: false
+
 # SEO Related
 google_site_verification :
 bing_site_verification   :
