@@ -3,7 +3,7 @@ layout: splash
 permalink: /
 header:
   overlay_color: "444444"
-  overlay_image: /assets/images/pattern.png
+  overlay_image: /assets/images/pattern.svg
 excerpt: 'A two day workshop to bring ARS scientists together for training and community building around microbiome research.'
 feature_row:
   - image_path: /assets/images/amplicons.jpg
