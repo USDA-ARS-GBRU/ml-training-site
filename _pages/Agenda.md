@@ -19,7 +19,7 @@ Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
 8:00 | Coffee
 8:30 | Introductions and objectives
-8:44 | Overview of Amplicon sequencing | TBD
+8:45 | Overview of Amplicon sequencing | TBD
 9:30 |Break
 9:45 | Group tutorial 1: Amplicon sequencing
 12:00 | Lunch Break and talk on the Scinet/GBRU resources and Signup for Scinet/GBRU 1:1 meetings
