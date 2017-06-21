@@ -4,6 +4,8 @@ excerpt: "An example workflow using Dada2"
 layout: single
 ---
 
+{% include toc %}
+
 This is a first draft of an Amplicon sequencing tutorial the
 ARS Microbiome workshop. It is modified from the Dada2 tutorial created
 by Benjamin Callahan, the Author of Dada2 with permission.
@@ -39,12 +41,12 @@ See the FAQ for some recommendations for common issues.
 Getting ready First we load the dada2 library. If you don’t already have
 the dada2 package, see the [dada2 installation
 instructions](https://benjjneb.github.io/dada2/dada-installation.html)
-
+```R
     library(dada2); packageVersion("dada2")
-
     ## [1] '1.4.0'
+```
 
-If your dada2 version should be 1.4 or higher.
+Your dada2 version should be 1.4 or higher.
 
 The data we will work with are the same as those in the [Mothur Miseq
 SOP](http://www.mothur.org/wiki/MiSeq_SOP) walkthrough. Download the
@@ -55,7 +57,7 @@ paired-end fastq files to be processed. Define the following path
 variable so that it points to the extracted directory on your machine:
 
 This example uses data from
-
+```R
     library("dada2")
     base_path<-"/Users/rivers/Documents/MicrobiomeWorkshop/Amplicon_tutorial/"
     path <- paste0(base_path,"MiSeq_SOP")
@@ -84,13 +86,13 @@ This example uses data from
     ## [41] "Mock_S280_L001_R1_001.fastq"   "Mock_S280_L001_R2_001.fastq"  
     ## [43] "mouse.dpw.metadata"            "mouse.time.design"            
     ## [45] "stability.batch"               "stability.files"
-
+```
 If the package successfully loaded and your listed files match those
 here, you are ready to go through the DADA2 pipeline.
 
 Filter and Trim
 ===============
-
+```R
     # Sort ensures forward/reverse reads are in same order
     fnFs <- sort(list.files(path, pattern="_R1_001.fastq"))
     fnRs <- sort(list.files(path, pattern="_R2_001.fastq"))
@@ -99,7 +101,7 @@ Filter and Trim
     # Specify the full path to the fnFs and fnRs
     fnFs <- file.path(path, fnFs)
     fnRs <- file.path(path, fnRs)
-
+```
 If using this workflow on your own data: The string manipulations may
 have to be modified, especially the extraction of sample names from the
 file names.
@@ -107,8 +109,9 @@ file names.
 Examine quality profiles of forward and reverse reads It is important to
 look at your data. We start by visualizing the quality profiles of the
 forward reads:
-
+```R
     plotQualityProfile(fnFs[1:2])
+```
 
 ![](/assets/images/amplicon/unnamed-chunk-4-1.png)
 
@@ -119,9 +122,9 @@ additional trimming is needed, so we will truncate the forward reads at
 position 240 (trimming the last 10 nucleotides).
 
 Now we visualize the quality profile of the reverse reads:
-
+```R
     plotQualityProfile(fnRs[1:2])
-
+```
 ![](/assets/images/amplicon/unnamed-chunk-5-1.png) The
 reverse reads are significantly worse quality, especially at the end,
 which is common in Illumina sequencing. This isn’t too worrisome, DADA2
@@ -143,18 +146,18 @@ Perform filtering and trimming
 ==============================
 
 We define the filenames for the filtered fastq.gz files:
-
+```R
     filt_path <- file.path(path, "filtered") # Place filtered files in filtered/ subdirectory
     filtFs <- file.path(filt_path, paste0(sample.names, "_F_filt.fastq.gz"))
     filtRs <- file.path(filt_path, paste0(sample.names, "_R_filt.fastq.gz"))
-
+```
 We’ll use standard filtering parameters: maxN=0 (DADA2 requires no Ns),
 truncQ=2, rm.phix=TRUE and maxEE=2. The maxEE parameter sets the maximum
 number of “expected errors” allowed in a read, which is a better filter
 than simply averaging quality scores.
 
 Filter the forward and reverse reads:
-
+```R
     out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,160),
                   maxN=0, maxEE=c(2,2), truncQ=2, rm.phix=TRUE,
                   compress=TRUE, multithread=TRUE)
@@ -167,7 +170,7 @@ Filter the forward and reverse reads:
     ## F3D142_S208_L001_R1_001.fastq     3183      2914
     ## F3D143_S209_L001_R1_001.fastq     3178      2941
     ## F3D144_S210_L001_R1_001.fastq     4827      4312
-
+```
 If using this workflow on your own data: The standard filtering
 parameters are starting points, not set in stone. For example, if too
 few reads are passing the filter, considering relaxing maxEE, perhaps
@@ -193,7 +196,7 @@ are used (the error rates if only the most abundant sequence is correct
 and all the rest are errors).
 
 The following runs in about 1.5 minutes on a 2016 Macbook Pro:
-
+```R
     # Learn error rates, and time the procedure
     system.time(errF <- learnErrors(filtFs, multithread=TRUE))
 
@@ -229,7 +232,8 @@ The following runs in about 1.5 minutes on a 2016 Macbook Pro:
 
     ##    user  system elapsed
     ## 197.896   4.869  78.152
-
+```
+```R
     # Learn error rates, time the procedure
     system.time(errR <- learnErrors(filtRs, multithread=TRUE))
 
@@ -266,16 +270,16 @@ The following runs in about 1.5 minutes on a 2016 Macbook Pro:
 
     ##    user  system elapsed
     ## 150.270   3.872  60.280
-
+```
 It is always worthwhile, as a sanity check if nothing else, to visualize
 the estimated error rates:
-
+```R
     plotErrors(errF, nominalQ=TRUE)
 
     ## Warning: Transformation introduced infinite values in continuous y-axis
 
     ## Warning: Transformation introduced infinite values in continuous y-axis
-
+```
 ![](/assets/images/amplicon/unnamed-chunk-10-1.png) The
 error rates for each possible transition (eg. A-&gt;C, A-&gt;G, …) are
 shown. Points are the observed error rates for each consensus quality
@@ -307,7 +311,7 @@ dereplicated reads. These quality profiles inform the error model of the
 subsequent denoising step, significantly increasing DADA2’s accuracy.
 
 Dereplicate the filtered fastq files:
-
+```R
     derepFs <- derepFastq(filtFs, verbose=TRUE)
 
     ## Dereplicating sequence entries in Fastq file: /Users/rivers/Documents/MicrobiomeWorkshop/Amplicon_tutorial/MiSeq_SOP/filtered/F3D0_F_filt.fastq.gz
@@ -475,7 +479,7 @@ Dereplicate the filtered fastq files:
     # Name the derep-class objects by the sample names
     names(derepFs) <- sample.names
     names(derepRs) <- sample.names
-
+```
 If using this workflow on your own data: The tutorial dataset is small
 enough to easily load into memory. If your dataset exceeds available
 RAM, it is preferable to process samples one-by-one in a streaming
@@ -488,7 +492,7 @@ We are now ready to apply the core sequence-variant inference algorithm
 to the dereplicated data.
 
 Infer the sequence variants in each sample:
-
+```R
     system.time(dadaFs <- dada(derepFs, err=errF, multithread=TRUE))
 
     ## Sample 1 - 7113 reads in 1979 unique sequences.
@@ -514,7 +518,8 @@ Infer the sequence variants in each sample:
 
     ##    user  system elapsed
     ##  42.754   1.012  16.803
-
+```
+```R
     dadaRs <- dada(derepRs, err=errR, multithread=TRUE)
 
     ## Sample 1 - 7113 reads in 1660 unique sequences.
@@ -537,15 +542,15 @@ Infer the sequence variants in each sample:
     ## Sample 18 - 4871 reads in 1161 unique sequences.
     ## Sample 19 - 6504 reads in 1502 unique sequences.
     ## Sample 20 - 4314 reads in 732 unique sequences.
-
+```
 Inspecting the dada-class object returned by dada:
-
+```R
     dadaFs[[1]]
 
     ## dada-class: object describing DADA2 denoising results
     ## 128 sample sequences were inferred from 1979 input unique sequences.
     ## Key parameters: OMEGA_A = 1e-40, BAND_SIZE = 16, USE_QUALS = TRUE
-
+```
 The DADA2 algorithm inferred 128 real variants from the 1979 unique
 sequences in the first sample. There is much more to the dada-class
 return object than this (see help("dada-class") for some info),
@@ -574,7 +579,7 @@ forward and reverse reads being in matching order at the time they were
 dereplicated.
 
 Merge the denoised forward and reverse reads:
-
+```R
     mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose=TRUE)
 
     ## 6600 paired-reads (in 105 unique pairings) successfully merged out of 7113 (in 254 pairings) input.
@@ -634,7 +639,7 @@ Merge the denoised forward and reverse reads:
     ## 4       433       4       3    148         0      0      2   TRUE
     ## 5       353       5       6    148         0      0      1   TRUE
     ## 6       285       6       5    148         0      0      2   TRUE
-
+```
 We now have a data.frame for each sample with the merged $sequence, its
 $abundance, and the indices of the merged $forward and $reverse denoised
 sequences. Paired reads that did not exactly overlap were removed by
@@ -647,7 +652,7 @@ to be revisited: Did you trim away the overlap between your reads?
 Construct sequence table We can now construct a “sequence table” of our
 mouse samples, a higher-resolution version of the “OTU table” produced
 by classical methods:
-
+```R
     seqtab <- makeSequenceTable(mergers)
 
     ## The sequences being tabled vary in length.
@@ -664,7 +669,7 @@ by classical methods:
     ##   1  87 192   6   2
 
     hist(nchar(getSequences(seqtab)), main="Distribution of sequence lengths")
-
+```
 ![](/assets/images/amplicon/unnamed-chunk-18-1.png) The
 sequence table is a matrix with rows corresponding to (and named by) the
 samples, and columns corresponding to (and named by) the sequence
@@ -685,7 +690,7 @@ remain. Fortunately, the accuracy of the sequences after denoising makes
 identifying chimeras simpler than it is when dealing with fuzzy OTUs:
 all sequences which can be exactly reconstructed as a bimera (two-parent
 chimera) from more abundant sequences.
-
+```R
     seqtab.nochim <- removeBimeraDenovo(seqtab, method="consensus", multithread=TRUE, verbose=TRUE)
 
     ## Identified 59 bimeras out of 288 input sequences.
@@ -697,7 +702,7 @@ chimera) from more abundant sequences.
     sum(seqtab.nochim)/sum(seqtab)
 
     ## [1] 0.9643192
-
+```
 The fraction of chimeras varies based on factors including experimental
 procedures and sample complexity, but can be substantial. Here chimeras
 make up about 20% of the inferred sequence variants, but those variants
@@ -715,7 +720,7 @@ Track reads through the pipeline
 
 As a final check of our progress, we’ll look at the number of reads that
 made it through each step in the pipeline:
-
+```R
     getN <- function(x) sum(getUniques(x))
     track <- cbind(out, sapply(dadaFs, getN), sapply(mergers, getN), rowSums(seqtab), rowSums(seqtab.nochim))
     colnames(track) <- c("input", "filtered", "denoised", "merged", "tabled", "nonchim")
@@ -729,7 +734,7 @@ made it through each step in the pipeline:
     ## F3D142  3183     2914     2914   2663   2663    2600
     ## F3D143  3178     2941     2941   2575   2575    2550
     ## F3D144  4827     4312     4312   3668   3668    3527
-
+```
 Looks good, we kept the majority of our raw reads, and there is no
 over-large drop associated with any single step.
 
@@ -761,10 +766,17 @@ General Fasta release files) are available. To follow along, download
 the silva\_nr\_v123\_train\_set.fa.gz file, and place it in the
 directory with the fastq files.
 
-The following databases are available: \* Maintained: \* GreenGenes
-version 13.8 \* RDP version 14 \* Silva version 123 (Silva dual-license)
-\* UNITE (General Fasta releases) (version 1.3.3 or later of the dada2
-package) \* Contributed: \* HitDB version 1 (Human InTestinal 16S rRNA)
+The following databases are available:
+
+**Maintained:**
+* GreenGenes version 13.8
+* RDP version 14
+* Silva version 123 (Silva dual-license)
+* UNITE (General Fasta releases) (version 1.3.3 or later of the dada2
+package)
+
+**Contributed:**
+* HitDB version 1 (Human InTestinal 16S rRNA)
 
 Note that currently species-assignment training fastas are only
 available for the Silva and RDP databases. In addition to thanking the
@@ -787,7 +799,7 @@ provided in the form of a fasta file (or compressed fasta file) in which
 the taxonomy corresponding to each sequence is encoded in the id line in
 the following fashion (the second sequence is not assigned down to level
 6):
-
+```R
     taxtrain <- paste0(base_path,"silva_nr_v123_train_set.fa.gz")
     taxa <- assignTaxonomy(seqtab.nochim, taxtrain, multithread=TRUE)
     unname(head(taxa))
@@ -806,7 +818,7 @@ the following fashion (the second sequence is not assigned down to level
     ## [4,] "Bacteroidales_S24-7_group" NA           
     ## [5,] "Bacteroidaceae"            "Bacteroides"
     ## [6,] "Bacteroidales_S24-7_group" NA
-
+```
 Okay you've done it. You've sequenced, cleaned, clustered, removed
 chimeras and identified the microbial sequences in your sample. Now it's
 time to begin making sense of that data.
@@ -822,7 +834,7 @@ sampled (eg. GXDY).
 
 Import into phyloseq:
 ---------------------
-
+```R
     library(phyloseq); packageVersion("phyloseq")
 
     ## [1] '1.20.0'
@@ -853,10 +865,10 @@ Import into phyloseq:
     ## otu_table()   OTU Table:         [ 229 taxa and 19 samples ]
     ## sample_data() Sample Data:       [ 19 samples by 4 sample variables ]
     ## tax_table()   Taxonomy Table:    [ 229 taxa by 6 taxonomic ranks ]
-
+```
 Plot the species richness
 =========================
-
+```R
     plot_richness(ps, x="Day", measures=c("Shannon", "Simpson"), color="When") + theme_bw()
 
     ## Warning in estimate_richness(physeq, split = TRUE, measures = measures): The data you have provided does not have
@@ -865,7 +877,7 @@ Plot the species richness
     ## trimmed low-abundance taxa from the data.
     ##
     ## We recommended that you find the un-trimmed data and retry.
-
+```
 ![](/assets/images/amplicon/unnamed-chunk-26-1.png)
 
 No obvious systematic difference in alpha-diversity between early and
@@ -873,7 +885,7 @@ late samples.
 
 Create ordination plots
 =======================
-
+```R
     ord.nmds.bray <- ordinate(ps, method="NMDS", distance="bray")
 
     ## Square root transformation
@@ -925,19 +937,19 @@ Create ordination plots
     ## *** Solution reached
 
     plot_ordination(ps, ord.nmds.bray, color="When", title="Bray NMDS")
-
+```
 ![](/assets/images/amplicon/unnamed-chunk-28-1.png)
 Ordination picks out a clear separation between the early and late
 samples.
 
 Bar plot
 ========
-
+```R
     top20 <- names(sort(taxa_sums(ps), decreasing=TRUE))[1:20]
     ps.top20 <- transform_sample_counts(ps, function(OTU) OTU/sum(OTU))
     ps.top20 <- prune_taxa(top20, ps.top20)
     plot_bar(ps.top20, x="Day", fill="Family") + facet_wrap(~When, scales="free_x")
-
+```
 ![](/assets/images/amplicon/unnamed-chunk-29-1.png)
 
 Nothing glaringly obvious jumps out from the taxonomic distribution of
@@ -951,9 +963,9 @@ metrics like UNIFRAC distance or just plot datain a phylogentic context.
 
 That can be done in phyloseq too.
 
-Align the sequnces
+Align the sequences
 ------------------
-
+```R
     library("msa")
 
     ## Loading required package: Biostrings
@@ -1019,7 +1031,7 @@ Align the sequnces
     mult <- msa(seqs, method="ClustalW", type="dna", order="input")
 
     ## use default substitution matrix
-
+```
 DODO
 ====
 

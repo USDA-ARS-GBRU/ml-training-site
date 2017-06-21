@@ -4,7 +4,7 @@ permalink: /
 header:
   overlay_color: "444444"
   overlay_image: /assets/images/pattern.png
-excerpt: 'A two daywork shop to bring ARS scientists together for training and community building around microbiome research.'
+excerpt: 'A two day workshop to bring ARS scientists together for training and community building around microbiome research.'
 feature_row:
   - image_path: /assets/images/amplicons.jpg
     alt: "amplicon"
@@ -29,6 +29,7 @@ feature_row:
     caption: "Photo credit: [Kristian Peters](https://commons.wikimedia.org/wiki/File:Plagiomnium_affine_laminazellen.jpeg)"
 
 ---
+
 
 {% include feature_row id="intro" type="center" %}
 
