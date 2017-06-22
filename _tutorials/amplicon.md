@@ -113,7 +113,7 @@ forward reads:
     plotQualityProfile(fnFs[1:2])
 ```
 
-![](/assets/images/amplicon/unnamed-chunk-4-1.png)
+![](Microbiome-workshop/assets/images/amplicon/unnamed-chunk-4-1.png)
 
 The forward reads are good quality. We generally advise trimming the
 last few nucleotides to avoid less well-controlled errors that can arise
