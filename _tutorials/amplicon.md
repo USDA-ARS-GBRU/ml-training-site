@@ -1035,10 +1035,10 @@ Align the sequences
 DODO
 ====
 
--   Make tree
--   Calculate unifrac with the tree
--   place data on tree see:
-    <https://bioconductor.org/packages/release/bioc/vignettes/phyloseq/inst/doc/phyloseq-analysis.html>
-    <https://f1000research.com/articles/5-1492/v2>
--   DESEQ2
--   SPIEC-EASI networks
+* Make tree
+* Calculate unifrac with the tree
+* place data on tree see:
+    * https://bioconductor.org/packages/release/bioc/vignettes/phyloseq/inst/doc/phyloseq-analysis.html
+    * https://f1000research.com/articles/5-1492/v2
+* DESEQ2
+* SPIEC-EASI networks
