@@ -113,7 +113,7 @@ forward reads:
     plotQualityProfile(fnFs[1:2])
 ```
 
-![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-4-1.png)
+![](/Microbiome-workshop/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-4-1.png)
 
 The forward reads are good quality. We generally advise trimming the
 last few nucleotides to avoid less well-controlled errors that can arise
@@ -125,7 +125,7 @@ Now we visualize the quality profile of the reverse reads:
 ```R
     plotQualityProfile(fnRs[1:2])
 ```
-![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-5-1.png) The
+![](/Microbiome-workshop/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-5-1.png) The
 reverse reads are significantly worse quality, especially at the end,
 which is common in Illumina sequencing. This isn’t too worrisome, DADA2
 incorporates quality information into its error model which makes the
@@ -280,7 +280,7 @@ the estimated error rates:
 
     ## Warning: Transformation introduced infinite values in continuous y-axis
 ```
-![](/assets/images/amplicon/unnamed-chunk-10-1.png) The
+![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-10-1.png) The
 error rates for each possible transition (eg. A-&gt;C, A-&gt;G, …) are
 shown. Points are the observed error rates for each consensus quality
 score. The black line shows the estimated error rates after convergence.
@@ -670,7 +670,7 @@ by classical methods:
 
     hist(nchar(getSequences(seqtab)), main="Distribution of sequence lengths")
 ```
-![](/assets/images/amplicon/unnamed-chunk-18-1.png) The
+![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-18-1.png) The
 sequence table is a matrix with rows corresponding to (and named by) the
 samples, and columns corresponding to (and named by) the sequence
 variants. The lengths of our merged sequences all fall within the
@@ -878,7 +878,7 @@ Plot the species richness
     ##
     ## We recommended that you find the un-trimmed data and retry.
 ```
-![](/assets/images/amplicon/unnamed-chunk-26-1.png)
+![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-26-1.png)
 
 No obvious systematic difference in alpha-diversity between early and
 late samples.
@@ -938,7 +938,7 @@ Create ordination plots
 
     plot_ordination(ps, ord.nmds.bray, color="When", title="Bray NMDS")
 ```
-![](/assets/images/amplicon/unnamed-chunk-28-1.png)
+![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-28-1.png)
 Ordination picks out a clear separation between the early and late
 samples.
 
@@ -950,7 +950,7 @@ Bar plot
     ps.top20 <- prune_taxa(top20, ps.top20)
     plot_bar(ps.top20, x="Day", fill="Family") + facet_wrap(~When, scales="free_x")
 ```
-![](/assets/images/amplicon/unnamed-chunk-29-1.png)
+![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-29-1.png)
 
 Nothing glaringly obvious jumps out from the taxonomic distribution of
 the top 20 sequences to explain the early-late differentiation.
