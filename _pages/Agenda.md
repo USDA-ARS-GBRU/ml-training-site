@@ -22,7 +22,7 @@ Time | Event | Speaker/facilitator
 8:45 | Overview of Amplicon sequencing | TBD
 9:30 |Break
 9:45 | Group tutorial 1: Amplicon sequencing
-12:00 | Lunch Break and talk on the Scinet/GBRU resources and Signup for Scinet/GBRU 1:1 meetings
+12:00 | Lunch Break and talk on the Scinet/GBRU resources and Signup for Scinet/GBRU 1:1 meetings. Attendee is responsible for lunch.
 1:00 | Amplicon sequencing tutorial continues
 2:00 | 5 minute data/possible project talks
 2:45 | Break
@@ -40,7 +40,7 @@ Time | Event | Speaker/facilitator
 10:15 | Break
 10:30 | Overview of metatransciptome sequencing | TBD
 11:30 |Group tutorial 3: Metatranscriptomics
-12:30 | Lunch and science talk
+12:30 | Lunch and science talk. Attendee is responsible for lunch.
 1:30 | Group tutorial 3: Metatranscriptomics continued
 4:00 | 5 minute data/possible project talks
 4:45 | Workshop wrap-up and survey
