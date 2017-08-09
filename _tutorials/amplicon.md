@@ -113,7 +113,7 @@ forward reads:
     plotQualityProfile(fnFs[1:2])
 ```
 
-![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-4-1.png)
+![](/Microbiome-workshop/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-4-1.png)
 
 The forward reads are good quality. We generally advise trimming the
 last few nucleotides to avoid less well-controlled errors that can arise
@@ -125,7 +125,7 @@ Now we visualize the quality profile of the reverse reads:
 ```R
     plotQualityProfile(fnRs[1:2])
 ```
-![](/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-5-1.png) The
+![](/Microbiome-workshop/Microbiome-workshop/assets/images/amplicon/unnamed-chunk-5-1.png) The
 reverse reads are significantly worse quality, especially at the end,
 which is common in Illumina sequencing. This isn’t too worrisome, DADA2
 incorporates quality information into its error model which makes the
