@@ -48,6 +48,9 @@ If you are running this tutorial on CERES the the data is available at:
 
  The the whole unprocessed dataset can be downloaded from the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/data/view/PRJEB15671). Be sure to download the "submitted files" not the "processed files" or the filename will not match with the metadata file.
 
+# Understanding Qiime2 files
+Qiime2 uses two different file types that contain the data and metadata from an analysis: ```.qza``` files are data files and ```.qzv``` files are visualizations.
+you can see what type of data is contained in a data artifact with the command ```qiime tools peek filename.qza```. All of the visualizations can be viewed using an online browser that is available at [https://view.qiime2.org](https://view.qiime2.org).
 
 # Getting onto Ceres
 
@@ -231,7 +234,7 @@ Database | Description | License
 [The RDP database](https://rdp.cme.msu.edu/) | A large collection of archaeal bacterial and fungal sequences | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
 [UNITE](https://unite.ut.ee/) | The primary database for fungal ITS and 28S data | Not stated
 
-There are several methods of taxonomic classification available. The most commonly used classifier is the [RDP classifier](https://rdp.cme.msu.edu/classifier/classifier.jsp). Other software includes [SCInetTAX](http://www.drive5.com/usearch/manual/cmd_sintax.html) and [16S classifier](http://metabiosys.iiserb.ac.in/16Sclassifier/). We will be using the QIIME2's built-in naive Bayesian classifier (which is built on Scikit-learn but similar to RDP), noting that the method, while fast and powerful, has a tendency  [over-classify](http://www.drive5.com/usearch/manual/tax_err.html) reads.
+There are several methods of taxonomic classification available. The most commonly used classifier is the [RDP classifier](https://rdp.cme.msu.edu/classifier/classifier.jsp). Other software includes [SINTAX](http://www.drive5.com/usearch/manual/cmd_sintax.html) and [16S classifier](http://metabiosys.iiserb.ac.in/16Sclassifier/). We will be using the QIIME2's built-in naive Bayesian classifier (which is built on Scikit-learn but similar to RDP), noting that the method, while fast and powerful, has a tendency  [over-classify](http://www.drive5.com/usearch/manual/tax_err.html) reads.
 
 There are two steps to taxonomic classification: [Training the Classifier](https://docs.qiime2.org/2017.7/tutorials/feature-classifier/) ( or using a [pre-trained](https://docs.qiime2.org/2017.7/data-resources/) dataset) and classifying the sequence variants.  Generally it is best to train the classifier on the exact region of the 16S, 18S or ITS you sequenced.
 For this tutorial we will be using a classifier model trained on the Silva 99% database trimmed to the V4 region.
@@ -341,4 +344,83 @@ The problem is challenging for several reasons:
 
 
 ## Gneiss analysis
-Gneiss applies a method for compositional data borrowed from geology to look "sidestep" the question of the absolute changes of sequences and "instead look at the balance between particular subsets of the microbial community," (Morton et al. 2017).
+Gneiss applies a method for compositional data borrowed from geology to "sidestep" the question of the absolute changes of sequences and "instead look at the balance between particular subsets of the microbial community," [(Morton et al. 2017)](https://doi.org/10.1128/mSystems.00162-16). For moreon the concept of balances see this [post](https://github.com/biocore/gneiss/blob/master/ipynb/balance_trees.ipynb). Sequence variants are hierarchically clustered based on environmental gradients or co-occurrence. Then the isometric log ratios are calculated and compared for subsets of taxa. While individual taxa cannot be compares groups of taxa responding to environmental effects can be compared. Statistical tests of for differences can also be applied.
+
+Since we don't have a particular environmental gradient that is structuring lets start by doing a hierarchical clustering based on co-occurrence patterns.
+
+First add pseudocounts to each cell in the matrix. This is done so that log transformations can be taken across the table.
+```bash
+time qiime gneiss add-pseudocount \
+    --i-table table-dada2-filtered.qza \
+    --p-pseudocount 1 \
+    --o-composition-table composition.qza
+```
+Time to run: 6 seconds
+
+Perform [Ward's agglomerative clustering](https://arxiv.org/abs/1111.6285)
+```bash    
+time qiime gneiss correlation-clustering \
+    --i-table composition.qza\
+    --o-clustering hierarchy.qza
+```
+Time to run: 5 minutes
+
+A tree has now been generated that can be used for making comparisons of sample groups.
+
+Calculate the isometric log transforms on each internal node of the tree
+
+```bash
+time qiime gneiss ilr-transform \
+    --i-table composition.qza \
+    --i-tree hierarchy.qza \
+    --o-balances balances.qza
+```
+Time to run: 15 seconds
+
+The balances are normally distributed an can now be analyzed using mixed linear
+models  We can perform a regression on the three categorical data types, Genotype, Fraction (soil or endophytic compartment) or Soil).  Themodel explains about 10% of the total variation at all nodes of the trees. This is typical for these complex experiments.  The amount that can be explained increases as we move up the covariance tree. Overall the most predictive factor is Genotype which is encouraging.
+
+```bash
+time qiime gneiss ols-regression \
+    --p-formula "Genotype+Soil+Fraction" \
+    --i-table balances.qza \
+    --i-tree hierarchy.qza \
+    --m-metadata-file /project/microbiome_workshop/amplicon/data/mapping3.txt \
+    --o-visualization regression_summary.qzv
+```
+One of the assumptions if the ordinary least squares model is that the fixed factors are random, in other words the authors randomly arrived at the genotypes they knocked out. Of course that's not true, the genotypes were selected because they had an impact on the phosphorus stress response.  They are Fixed factors. A mixed linear model can account for fixed and random factors and effects. Gneiss offerers a linear mixed model regression too but the interface seems to be in development  so there is not much I can say about it but we can try it now. Statistical modeling is done by the [statsmodels](http://www.statsmodels.org/stable/mixed_linear.html) python package.
+
+```bash
+qiime gneiss lme-regression \
+  --p-formula "Genotype" \
+  --i-table balances.qza \
+  --i-tree hierarchy.qza \
+  --m-metadata-file /project/microbiome_workshop/amplicon/data/mapping3.txt \
+  --p-groups Soil \
+  --o-visualization linear_mixed_effects_model.qzv \
+```
+
+We can look at the most statistically significant balances and examine what taxa make up those partitions.
+
+```bash
+qiime gneiss balance-taxonomy \
+    --i-balances balances.qza \
+    --i-tree hierarchy.qza \
+    --i-taxonomy taxonomy.qza \
+    --p-taxa-level 2 \
+    --p-balance-name 'y0' \
+    --m-metadata-file /project/microbiome_workshop/amplicon/data/mapping3.txt  \
+    --m-metadata-category Subject \
+    --o-visualization y0_taxa_summary.qzv
+```
+In this case the y0 balance is a split between samples that have plants in them and raw soil. It makes sense that this is the largest effect.  What happens if you run balance y2 or decrease the taxonomic level?
+
+# Other analyses
+
+This tutorial covered a range of analyses that can be done with microbiome data but there are other types on analyses that can be done too.
+
+* Functional analysis - Several packages attempt to impute function from taxonomy including [PiCrust](https://picrust.github.io/picrust/), [Tax4fun](http://tax4fun.gobics.de/),[Piphillin](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166104)
+* Inferring ecological interaction networks -[SPIEC-EASI](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004226)  Co-Variance is an issue, but SPIEC-EASI attempts to model conditional independence.
+* Data management tools - [Qiita](https://qiita.ucsd.edu/), from ARS scientist Dan Manter [myPhyloDB](http://www.myphylodb.org/)
+* Set analysis - From ARS Scientist Devin Coleman Derr [MetaComet](https://probes.pw.usda.gov/MetaCoMET/)
+* Other general analysis tools - [Mothur](https://www.mothur.org/) and the R-based [Phyloseq](https://joey711.github.io/phyloseq/)
