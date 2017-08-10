@@ -1,5 +1,5 @@
 ---
-title: "Amplicon analysis tutorial"
+title: "Amplicon analysis tutorial with Dada2"
 excerpt: "An example workflow using Dada2"
 layout: single
 ---

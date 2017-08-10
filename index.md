@@ -10,7 +10,7 @@ feature_row:
     alt: "amplicon"
     title: "Amplicon Sequencing"
     excerpt: "Sequencing amplified 16S rRNA, 16S rRNA or the fungal ITS"
-    url: "/tutorials/amplicon/"
+    url: "/tutorials/qiime2/"
     btn_label: "Learn More"
     caption: "Photo credit: [ Rocky Mountain Laboratories, NIAID, NIH](https://commons.wikimedia.org/wiki/File:SalmonellaNIAID.jpg)"
   - image_path: /assets/images/metagenomics.jpg

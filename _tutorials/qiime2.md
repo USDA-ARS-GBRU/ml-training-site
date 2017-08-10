@@ -1,24 +1,23 @@
 ---
-title: "Amplicon analysis tutorial"
+title: "Amplicon analysis with QIIME2"
 excerpt: "An example workflow using QIIME2 version 2017.7"
 layout: single
----
 
+---
+By Adam Rivers, Designed from the official [QIIME2 tutorials](https://docs.qiime2.org/2017.7/tutorials/)
 {% include toc %}
 
 
-**Why QIIME 2?** There are a number of great software packages for general amplicon analyses.
-Some examples include [Mothur](https://www.mothur.org/),
-[Phyloseq](https://joey711.github.io/phyloseq/), [Dada2](https://benjjneb.github.io/dada2/),
-[UPARSE](http://www.drive5.com/uparse/) and [QIIME 1](http://qiime.org/).
+**Why QIIME 2?** There are a number of great software packages for general amplicon analysis.
+Some examples include [Mothur](https://www.mothur.org/), [Phyloseq](https://joey711.github.io/phyloseq/), [Dada2](https://benjjneb.github.io/dada2/), [UPARSE](http://www.drive5.com/uparse/) and [QIIME 1](http://qiime.org/).
 The most widely used software may be QIIME 1. QIIME 1 is a collection of
-wrappers around other software and tools that makes it easy to customize amplicon
+custom tools and wrappers around other software that makes it easy to customize amplicon
 analysis, but that flexibility sometimes makes it hard to track the provenance
 of data or be sure you are doing the right thing. QIIME 2 has a very
 different model for data analysis wraps data and information about that data
 into one object that addresses some of these shortcomings. QIIME 2 also
 incorporates a major advance that has happened in the last year: the use of
-exact "Sequence Variants" rather than "Operational Taxonomic Units".
+exact "Sequence Variants" (SV) rather than "Operational Taxonomic Units" (OTU).
 Finally QIIME 2 still has a great development team behind it and is poised to
 become one of the primary amplicon analysis methods.  For that reason we are
 teaching QIIME 2 while it is still in its pre-release stage (Don't you feel hi-tech?).
@@ -29,9 +28,9 @@ teaching QIIME 2 while it is still in its pre-release stage (Don't you feel hi-t
 For this tutorial We will be looking at data from this paper:
 > Castrillo, G., Teixeira, P.J.P.L., Paredes, S.H., Law, T.F., de Lorenzo, L., Feltcher, M.E., Finkel, O.M., Breakfield, N.W., Mieczkowski, P., Jones, C.D., Paz-Ares, J., Dangl, J.L., 2017. Root microbiota drive direct integration of phosphate stress and immunity. Nature 543, 513–518. [doi:10.1038/nature21417](https://dx.doi.org/10.1038/nature21417)
 
-The authors knocked out the function different genes involved in the phosphate starvation response (8 treatments) of *Arabidopsis thaliana*. In two experiments they grew the mutants in natural soil, sequenced the 16S V4 region and found that the disruption of phosphate regulation altered the microbial community of the plants.  We will be analyzing this data in several different ways and comparing our results.
+The authors knocked out the function different genes involved in the phosphate stress response of *Arabidopsis thaliana*. In two experiments they grew the mutants in natural soil, sequenced the 16S V4 region and found that the disruption of phosphate regulation genes altered the microbial community of the plants.  We will be analyzing this data in several different ways and comparing our results.
 
-If you are running this tutorial on CERES the the data is available at:
+If you are running this tutorial on the Ceres computer cluster the the data is available at:
  ```bash
  # Fastq files
  /project/microbiome_workshop/amplicon/data/dangldatasubsampled
@@ -40,7 +39,7 @@ If you are running this tutorial on CERES the the data is available at:
   /project/microbiome_workshop/amplicon/data/mapping.txt
 
  # A Manifest file containing the names, locations and
- # orientation of the read files
+ # orientation of the read files for import to QIIME2
    /project/microbiome_workshop/amplicon/data/manifest.csv
  ```
 
@@ -48,11 +47,8 @@ If you are running this tutorial on CERES the the data is available at:
 
  The the whole unprocessed dataset can be downloaded from the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/data/view/PRJEB15671). Be sure to download the "submitted files" not the "processed files" or the filename will not match with the metadata file.
 
-# Understanding Qiime2 files
-Qiime2 uses two different file types that contain the data and metadata from an analysis: ```.qza``` files are data files and ```.qzv``` files are visualizations.
-you can see what type of data is contained in a data artifact with the command ```qiime tools peek filename.qza```. All of the visualizations can be viewed using an online browser that is available at [https://view.qiime2.org](https://view.qiime2.org).
 
-# Getting onto Ceres
+# Connecting to Ceres
 
 Ceres is the computer cluster for the USDA Agricultural Research Service's SCInet computing environment. From Terminal or Putty (for Windows users) create a secure shell connection to Ceres
 ```bash
@@ -63,10 +59,12 @@ In a real analysis you would create a script that runs all the commands in seque
 
 To request access to an interactive node:
 ```bash
-# request access to one node of the cluster
-salloc -p (microbiome workshop queue name) -N 1 -t 40
+# Request access to one node of the cluster
+# Note that "microbiome" is a special queue for the workshop,
+# to see available queues use the command "sinfo"
+salloc -p microbiome -N 1 -t 40
 
-# Set up some graphics software so that qiime2
+# Set up some graphics software so that QIIME2
 # can generate figures and run it in the background
 Xvfb :1 -screen 0 800x600x16 &
 
@@ -74,19 +72,32 @@ Xvfb :1 -screen 0 800x600x16 &
 export DISPLAY=:1.0
 
 # Load the QIIME2 module
-module load qiime2
+module load QIIME2
 ```
+When you are done at the end of the tutorial end your session like this.
+```bash
+# to log off shut down the graphics window
+killall Xvfb
+# sign out of the allocated node
+exit
+# sign out of Ceres head node
+exit
+```
+
 # Set up your working directory
 
 ```bash
 # In your homespace or other desired location, make a
 # directory and move into it
-mkdir qiime2-phosphate-tutorial
-cd qiime2-phosphate-tutorial
+mkdir QIIME2-phosphate-tutorial
+cd QIIME2-phosphate-tutorial
 ```
 
+# Understanding QIIME2 files
+QIIME2 uses two different file types that contain the data and metadata from an analysis: ```.qza``` files are data files while ```.qzv``` files are visualizations. The aythors of QIIME2 call these data files "data artifacts" to indicate that they are objects containing data and metadata about an experiment. It is really just a zip file containing a specially formatted directory with data and metadata. You can see what type of data is contained in a data file with the command ```qiime tools peek filename.qza```. All of QIIME2 files can be viewed using an online browser that is available at [https://view.qiime2.org](https://view.qiime2.org).
+
 # Import your paired-end sequences
-For this project the reads were sequences using Illumina paired-end, 250 base pair reads with forward and reverse reads in separate files. The fastq is imported in to a QIIME2 "data artifact" a term the authors use to describe an object containing data and metadata about an experiment. It is really just a zip file containing a specially formatted directory with data and metadata. QIIME2 data artifacts end in ```.qza``` while QIIME2 visualization artifacts end in ```.qvz```.
+For this project the reads were sequences using Illumina paired-end, 250 base pair reads with forward and reverse reads in separate files. The fastq is imported in to a QIIME2 data artifact ending in ```.qza```
 
 ```bash
 time qiime tools import \
@@ -97,7 +108,8 @@ time qiime tools import \
 ```
 Time to run: 2 minutes
 
-[download demux.qza file](https://github.com){: .btn .btn--info} or [view demux.qza file](https://view.qiime2.org){: .btn .btn--info}
+Output:
+* ```demux.qza```
 
 # Examine the quality of the data
 We can view the characteristics of the dataset and the quality scores of the data by creating a QIIME2 visualization artifact.
@@ -109,24 +121,25 @@ time qiime demux summarize \
  ```
  Time to run: 1 minute
 
-[download demux.qzv file](https://github.com){: .btn .btn--info} or [view demux.qzv file](https://view.qiime2.org){: .btn .btn--info}
+ Output:
+ * ```demux.qzv``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2Fdemux.qzv) \| [Download](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/demux.qzv)
 
-This will create a visualization file. You can download the file to your local computer then view it using the [QIIME2 visualization server](https://view.qiime2.org). From a new terminal window on your local computer copy the file:
+This will create a visualization file. You can download the file to your local computer. From a new terminal window on your local computer copy the file:
 
 ```bash
 scp <user.name>@scinet-login.bioteam.net:/path/to/data .
 ```
 
-Now you can view the file on your local computer using the QIIME2 visualization server.  Alternatively you can view the precomputed file on that server using the button above.
+Now you can view the file on your local computer using the [QIIME2 visualization server](https://view.qiime2.org).  Alternatively you can view the precomputed file on that server using the button above.
 
 When viewing the data look for the point in the forward and reverse reads where quality scores decline below 25-30. We will need to trim reads to this point to create high quality sequence variants.
 
 # Selecting Sequence Variants
 
-The process of selecting sequence variants is the core processing step in amplicon analysis. This takes the place of "OTU picking" a method of clustering similar data together that was the common method for dealing with sequencing errors until last year.  Three different methods have been published to select sequence variants, [Dada2](https://dx.doi.org/10.1038/nmeth.3869) uses and statistical error correction model, [Deblur](https://dx.doi.org/10.1128/mSystems.00191-16) takes an information theoretic approach and [UNOISE2](https://doi.org/10.1101/081257). Each of these methods attempt to remove or correct reads with sequencing errors and then remove chimeric sequences originating from different DNA templates.
+The process of selecting sequence variants is the core processing step in amplicon analysis. This takes the place of "OTU picking" a method of clustering similar data together that was the common method for dealing with sequencing errors until last year.  Three different methods have been published to select sequence variants, [Dada2](https://dx.doi.org/10.1038/nmeth.3869) uses and statistical error correction model, [Deblur](https://dx.doi.org/10.1128/mSystems.00191-16) takes an information theoretic approach and [UNOISE2](https://doi.org/10.1101/081257) applies a heuristic. Each of these methods attempt to remove or correct reads with sequencing errors and then remove chimeric sequences originating from different DNA templates.
 For the next step you can select either the Dada2 method or the Deblur method.
 
-**A note on parallel processing**. Both Dada2 and Deblur can independently process each sample. This becomes very important as experiments grow to thousands of samples. In this tutorial we are taking advantage of " course grained parallelism" provided by the multiple cores in our processor. However, Deblur and Dada2 (after the error model learning step) can select sequence variants in a sample totally independently making the problem "embarrassingly parallel." This means that samples can be split into many different files and processed on arbitrarily many machines simultaneously.
+**A note on parallel processing**. Both Dada2 and Deblur can independently process each sample. This becomes very important as experiments grow to thousands of samples. In this tutorial we are taking advantage of " course grained parallelism" provided by the multiple cores in our processor. However, Deblur and Dada2 (after the error model learning step) can select sequence variants in a sample totally independently, making the problem "embarrassingly parallel." This means that samples can be split into many different files and processed on arbitrarily many machines simultaneously.
 {: .notice--info}
 
 Sequence variant selection is the slowest step in the tutorial. For that reason it is best to submit this step using the SLURM Sbatch scheduler.
@@ -147,10 +160,13 @@ time qiime dada2 denoise-paired \
 ```
 To submit this command using Sbatch:
 ```bash
-sbatch /project/microbiome_workshop/amplicon/example/qiime2-phosphate-tutorial/dada2.sh
+sbatch /project/microbiome_workshop/amplicon/example/QIIME2-phosphate-tutorial/dada2.sh
 ```
 Time to run: 35 minutes
 
+Output:
+* ```rep-seqs-dada2``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2rep-stats-dada2.qzv) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/rep-seqs-dada2.qzv)
+* ```table-dada2``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2table-dada2.qzv) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/table-dada2.qzv)
 
 ## Option 2: Deblur (Faster)
 Deblur only uses forward reads at this time. You could get around this by merging your data with an outside tool like [BBmerge](http://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/bbmerge-guide/) then importing your data as single ended. For simplicity, in this tutorial we will just use the forward reads.
@@ -165,9 +181,16 @@ Deblur only uses forward reads at this time. You could get around this by mergin
 
 To submit this command using Sbatch:
 ```bash
-sbatch /project/microbiome_workshop/amplicon/example/qiime2-phosphate-tutorial/deblur.sh
+sbatch /project/microbiome_workshop/amplicon/example/QIIME2-phosphate-tutorial/deblur.sh
 ```
 Time to run: 4 minutes
+
+Output:
+* ```deblurresults/representative_sequences.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2deblurresults%2representative_sequences.qza) \| [Download](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/deblurresults/representative_sequences.qza)
+* ```deblurresults/stats.qza```
+[View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2deblurresults%2stats.qza) \| [Download](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/deblurresults/stats.qza)
+* ```deblurresults/table.qza```
+[View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2deblurresults%2table.qza) \| [Download](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/deblurresults/table.qza)
 
 Okay, we have just done the hard part of amplicon sequence analysis.  At this point we have our BIOM count table, the representative sequence variants and a stats file for Deblur.
 
@@ -180,6 +203,9 @@ time qiime feature-table summarize \
   --m-sample-metadata-file /project/microbiome_workshop/amplcon/data/mapping.txt
   ```
   Time to run: 30 seconds
+
+ Output:
+ * ```table-dada2``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2table-dada2.qzv) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/table-dada2.qzv)
 
 # Phylogenetics
 There are a number of diversity metrics like unifrac distance that require the construction of a phylogenetic tree.
@@ -194,6 +220,9 @@ time qiime alignment mafft \
 ```
 Time to run: 1 minute
 
+Output:
+* ```aligned-rep-seqs.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2aligned-rep-seqs.qza) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/aligned-rep-seqs.qza)
+
 ## Masking sites
 Some sites in the alignment are not phylogenetically informative. These sites are masked.
 
@@ -204,6 +233,9 @@ time qiime alignment mask \
 ```
 Time to run: 1 minute
 
+Output:
+* ```masked-aligned-rep-seqs.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2masked-aligned-rep-seqs.qza) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/masked-aligned-rep-seqs.qza)
+
 ## Creating a tree
 Fastree is used to generate a phylogenetic tree from the masked alignment.
 ```bash
@@ -213,6 +245,9 @@ time qiime phylogeny fasttree \
 ```
 Time to run: 1 minute
 
+Output:
+* ```unrooted-tree.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2unrooted-tree.qza) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/unrooted-tree.qza)
+
 ## Midpoint rooting
 Fastree creates an unrooted tree. We can root the tree at it's midpoint with this command:
 ```bash
@@ -220,10 +255,13 @@ time qiime phylogeny midpoint-root \
   --i-tree unrooted-tree.qza \
   --o-rooted-tree rooted-tree.qza
  ```
- Time to run: 5 seconds
+Time to run: 5 seconds
+
+Output:
+* ```rooted-tree.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2rooted-tree.qza) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/rooted-tree.qza)
 
 # Taxonomic analysis
-Sequence variants are of limited usefulness by themselves. Often we are interested in what kinds of organisms are present in our sample not just the diversity of the sample.  To identify these sequence variants two things are needed:  a reference database and an algorithm for identifying the sequence using the database.
+Sequence variants are of limited usefulness by themselves. Often we are interested in what kinds of organisms are present in our sample, not just the diversity of the sample.  To identify these sequence variants two things are needed:  a reference database and an algorithm for identifying the sequence using the database.
 
 The primary databases are:
 
@@ -236,7 +274,7 @@ Database | Description | License
 
 There are several methods of taxonomic classification available. The most commonly used classifier is the [RDP classifier](https://rdp.cme.msu.edu/classifier/classifier.jsp). Other software includes [SINTAX](http://www.drive5.com/usearch/manual/cmd_sintax.html) and [16S classifier](http://metabiosys.iiserb.ac.in/16Sclassifier/). We will be using the QIIME2's built-in naive Bayesian classifier (which is built on Scikit-learn but similar to RDP), noting that the method, while fast and powerful, has a tendency  [over-classify](http://www.drive5.com/usearch/manual/tax_err.html) reads.
 
-There are two steps to taxonomic classification: [Training the Classifier](https://docs.qiime2.org/2017.7/tutorials/feature-classifier/) ( or using a [pre-trained](https://docs.qiime2.org/2017.7/data-resources/) dataset) and classifying the sequence variants.  Generally it is best to train the classifier on the exact region of the 16S, 18S or ITS you sequenced.
+There are two steps to taxonomic classification: [Training the Classifier](https://docs.QIIME2.org/2017.7/tutorials/feature-classifier/) ( or using a [pre-trained](https://docs.QIIME2.org/2017.7/data-resources/) dataset) and classifying the sequence variants.  Generally it is best to train the classifier on the exact region of the 16S, 18S or ITS you sequenced.
 For this tutorial we will be using a classifier model trained on the Silva 99% database trimmed to the V4 region.
 
 ```bash
@@ -246,12 +284,19 @@ time qiime feature-classifier classify-sklearn \
   --o-classification taxonomy.qza
 ```
 Time to run: 4 minutes
+
+Output:
+* ```taxonomy.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2taxonomy.qza) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/taxonomy.qza)
+
 ```bash
 qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
   ```
 Time to run: 1 second
+
+* ```taxonomy.qzv``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2taxonomy.qzv) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/taxonomy.qzv)
+
 
 Create a bar plot visualization of the taxonomy data:
 ```bash
@@ -263,23 +308,30 @@ qiime taxa barplot \
 ```
 Time to run: 1 minute
 
-Looking at the the taxonomy.qzv file using https://view/qiime2.org We can see the data presented at different taxonomic levels and grouped by different experimental factors. If we drill down to taxonomic level 5 something looks a bit odd. There's lots of "Rickettsiales;f__mitochondria".  This is really  plant microchondrial contamination. Some of these samples also have chloroplast contamination.  
+Output:
+* ```taxa-bar-plots.qzv``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2taxa-bar-plots.qzv) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/taxa-bar-plots.qzv)
+
+
+Looking at the the ```taxonomy.qzv``` file using https://view/QIIME2.org We can see the data presented at different taxonomic levels and grouped by different experimental factors. If we drill down to taxonomic level 5 something looks a bit odd. There's lots of "Rickettsiales;f__mitochondria".  This is really  plant mitochondrial contamination. Some of these samples also have chloroplast contamination.  This kind of Taxonomic filtering isn't available in QIIME2 yet but it can be be done manually.
 
 ## Filtering contaminants
-By viewing the taxonomy.qzv file in the browser we can easily search for the sequence ID's that do or do not match  "mitochondria or chloroplast". We can also do this via the command line:
+By viewing the ```taxonomy.qzv``` file in the browser we can easily search for the sequence ID's that do or do not match "mitochondria or chloroplast". We can also do this via the command line:
+
+First create a list of all sequence variant ids that are not mitochondria or chloroplasts.
+
 ```bash
-# Export data to tabular format
+# Export taxonomy data to tabular format
 qiime tools export --output-dir taxonomy-export taxonomy.qza
 
 # search for matching lines with grep then select the id column
 grep -v -i "mitochondia|chloroplast" taxonomy-export/taxonomy.tsv | cut  -f 1 > no-chloro-mito-ids.txt
 ```
 
-This kind of filtering isn't available in QIIME2 yet but it can be be done on the underling biom data file. First export the data:
+Convert our Qiime data artifact to the underlying [biom](http://biom-format.org/) file
 ```bash
 # Export data to biom format
 qiime tools export --output-dir dada2-table-export table-dada2.qza
-
+# Move into the directory
 cd dada2-table-export
 
 # Convert the HDF5 biom file to a tsv biom file
@@ -289,7 +341,7 @@ biom subset-table \
   --ids ../no-chloro-mito-ids.txt \
   --output-fp feature-table-subset.biom
 
-#
+# Create a new QIIME2 data artifact with the filtered Biom file
 qiime tools import \
   --input-path feature-table-filtered.biom \
   --output-path ../table-dada2-filtered.qza \
@@ -297,6 +349,11 @@ qiime tools import \
 
 cd ..
 ```
+Time to Run: 2 minutes
+
+Output:
+* ```table-dada2-filtered.qza``` [View](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2table-dada2-filtered.qza) \| [Download](ttps://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/table-dada2-filtered.qza)
+
 
 Since we have altered the qza file we can create a new bar plots:
 
@@ -338,7 +395,7 @@ The problem is challenging for several reasons:
 * the data is sparse and some 0's mean a taxa is not present while other zeros mean an organism is present at a level below the limit of detection for the sequences sampled.
 * Each library is samples to a different depth so the issue of how to standardize the data comes up (simply dividing by the sum does not work).
 
-**To rarefy or not to rarefy?** It is a common but controversial practice to downsample count  data to the lowest count in your dataset to get around the issue of differential sequencung depth. in their paper titled "Waste not want not, why rarifying microbiome data is inadmissible" [McMurdie et al. (2014)](https://doi.org/10.1371/journal.pcbi.1003531) point out that this is a large waste of data and statistical power, and advocate for using differential expression software like DESeq2 that uses special normalizations and a negative binomial distribution to model data. the software uses a generalized linear model so it has a very flexible experimental design interface.  [Weiss et al. (2017)](https://doi.org/10.1186/s40168-017-0237-y) argue that the assumptions underling both the normalization and the distribution used by DEseq are inappropriate for microbiome data and show that.[Ancom](https://dx.doi.org/10.3402%2Fmehd.v26.27663) uses a zero inflated Gaussian model but only allows for simple two-way comparisons not richer statistical models. Gneiss [(paper)](http://doi.org/10.1128/mSystems.00162-16),  [(tutorial)](https://forum.qiime2.org/t/gneiss-tutorial/932) is currently the only compositional method available in QIIME2 (support for ANCOM was dropped) At least everyone agrees you can't just do a T-test.
+**To rarefy or not to rarefy?** It is a common but controversial practice to downsample count  data to the lowest count in your dataset to get around the issue of differential sequencung depth. in their paper titled "Waste not want not, why rarifying microbiome data is inadmissible" [McMurdie et al. (2014)](https://doi.org/10.1371/journal.pcbi.1003531) point out that this is a large waste of data and statistical power, and advocate for using differential expression software like DESeq2 that uses special normalizations and a negative binomial distribution to model data. the software uses a generalized linear model so it has a very flexible experimental design interface.  [Weiss et al. (2017)](https://doi.org/10.1186/s40168-017-0237-y) argue that the assumptions underling both the normalization and the distribution used by DEseq are inappropriate for microbiome data and show that.[Ancom](https://dx.doi.org/10.3402%2Fmehd.v26.27663) uses a zero inflated Gaussian model but only allows for simple two-way comparisons not richer statistical models. Gneiss [(paper)](http://doi.org/10.1128/mSystems.00162-16),  [(tutorial)](https://forum.QIIME2.org/t/gneiss-tutorial/932) is currently the only compositional method available in QIIME2 (support for ANCOM was dropped) At least everyone agrees you can't just do a T-test.
 {: .notice--warning}
 
 
