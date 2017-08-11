@@ -9,7 +9,7 @@ header:
 ---
 
 ## Participants
-We are fortunate to have participants from all 5 ARS geographic areas who do research in all 4 mission areas.
+We are fortunate to have participants from all 5 ARS geographic areas and APHIS who do research on all 4 mission areas.
 
 ### Northeast
 
