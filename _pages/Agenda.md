@@ -36,7 +36,6 @@ Time | Event | Speaker/facilitator
 
 Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
-
 8:00 | Coffee
 8:30 | Overview of metagenome sequencing | Adam Rivers
 9:15 | Group 2 tutorial: Metagenomics | All Participants
