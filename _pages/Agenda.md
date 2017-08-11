@@ -19,6 +19,7 @@ Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
 8:00 | Coffee
 8:30 | Welcome from the Northeast Area Director | Dariusz Swietlik
+8:35 | Welcome from the NAL Director | Paul Wester
 8:40 | Meeting goals and objectives | Brian Scheffler
 8:45 | Group introductions | All Participants
 9:15 | Ceres and linux commands | Jonathan Shao
@@ -42,8 +43,8 @@ Time | Event | Speaker/facilitator
 10:30 | Break
 10:45 | Metagenomics Tutorial continues | All Participants
 12:00 | Lunch. Attendee is responsible for lunch.
-1:00 | Introduction of NIST Microbiome head | Scott Jackson
-2:00 | Discussion of on Microbiome applications in Agriculture  
+1:00 | Introduction of NIST Microbiome group leader | Scott Jackson
+2:00 | Discussion of on Microbiome applications in agriculture  
 3:00 | Break
 3:15 | Tutorial on differential expression in metatranscriptomes
 4:30 | Workshop wrap-up and survey
