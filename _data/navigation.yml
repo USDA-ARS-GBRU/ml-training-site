@@ -2,14 +2,16 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Registration"
-    url: https://ars-microbiome.eventbrite.com
-  - title: "Agenda"
-    url: /agenda/
   - title: "Travel information"
     url: /travel/
+  - title: "Agenda"
+    url: /agenda/
   - title: "Tutorials"
     url: /tutorials/
+  - title: "People"
+    url: /people/
+  - title: "Registration"
+    url: https://ars-microbiome.eventbrite.com
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
