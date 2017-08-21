@@ -9,10 +9,6 @@ header:
 
 ---
 
-*The agenda for the workshop is still being developed.*
-
-## Tentative schedule
-
 ### Tuesday, August 29, 2017
 
 Time | Event | Speaker/facilitator
@@ -21,17 +17,18 @@ Time | Event | Speaker/facilitator
 8:30 | Welcome from the Northeast Area Director | Dariusz Swietlik
 8:35 | Welcome from the NAL Director | Paul Wester
 8:40 | Meeting goals and objectives | Brian Scheffler
-8:45 | Group introductions | All Participants
+8:45 | Group introductions | All
 9:15 | Ceres and linux commands | Jonathan Shao
 9:45 | Overview of Amplicon sequencing | Adam Rivers
 10:30 | Break
-10:45 | Group tutorial 1: Amplicon sequencing | All Participants
+10:45 | Group tutorial 1: Amplicon sequencing | All
 12:00 | Lunch. Attendee is responsible for lunch.
-1:00 | Amplicon sequencing tutorial continues
+1:00 | Amplicon sequencing tutorial continues | All
 3:00 | Break
-3:15 | Scientific area needs discussion
-4:15 | Reports from groups
-5:00 | end of session
+3:20 | Managing large scale amplicon projects | Dan Manter
+3:45 | Scientific area needs discussion | All
+4:30 | Reports from groups | All
+5:15 | End of session |
 
 ### Wednesday, August 30, 2017
 
@@ -39,12 +36,12 @@ Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
 8:00 | Coffee
 8:30 | Overview of metagenome sequencing | Adam Rivers
-9:15 | Group 2 tutorial: Metagenomics | All Participants
+9:15 | Group 2 tutorial: Metagenomics | All
 10:30 | Break
-10:45 | Metagenomics Tutorial continues | All Participants
+10:45 | Metagenomics Tutorial continues | All
 12:00 | Lunch. Attendee is responsible for lunch.
-1:00 | Introduction of NIST Microbiome group leader | Scott Jackson
-2:00 | Discussion of on Microbiome applications in agriculture  
+1:00 | Needs and opportunities with NIST | Scott Jackson
+2:00 | Discussion of on Microbiome applications in agriculture  | All
 3:00 | Break
-3:15 | Tutorial on differential expression in metatranscriptomes
+3:15 | Tutorial on differential expression in metatranscriptomes | All
 4:30 | Workshop wrap-up and survey
