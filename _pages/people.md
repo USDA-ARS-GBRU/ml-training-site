@@ -17,10 +17,10 @@ Participant | location
 ------------|----------
 Joe Urban | Beltsville, MD
 JoAnn van Kessel | Beltsville, MD
-Jonathan Shao | Beltsville, MD
 Elad Tako | Ithaca, NY
 Michael Wisniewski | Kearneysville, WV
 Charles Li | Beltsville, MD
+Wenbin Tuo | Beltsville, MD
 
 ### Midwest Area
 
@@ -38,7 +38,7 @@ Participant | location
 Diana Cox-Foster | Logan, UT
 Kirk Anderson | Tucson, AZ
 Mark Mazzola | Wenatchee, WA
-Amisha Poet-Peterson | Davis, CA
+Amisha Poret-Peterson | Davis, CA
 
 ### Plains Area
 
@@ -67,7 +67,7 @@ Timothy Smyser | Fort Collins, CO
 Michael Stulberg | Beltsville, MD
 
 
-## Bioinformatics Trainers
+## Bioinformatics Instructors
 
 Person | location
 -------|---------
