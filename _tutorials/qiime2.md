@@ -64,15 +64,19 @@ To request access to an interactive node:
 # to see available queues use the command "sinfo"
 salloc -p microbiome -N 1 -t 40
 
-# Set up some graphics software so that QIIME2
-# can generate figures and run it in the background
+# Set up Xvfb graphics software so that QIIME2 can generate figures.
+# Xvfb creates a virtual X session. This needs to be run in the background.
+# If you encounter an error saying the session already exists, then use a
+# different session number, e.g. "Xvfb :2"
 Xvfb :1 -screen 0 800x600x16 &
+
+
 
 # Add a Display variable to the local environment variables
 export DISPLAY=:1.0
 
 # Load the QIIME2 module
-module load QIIME2
+module load qiime2
 ```
 When you are done at the end of the tutorial end your session like this.
 ```bash
