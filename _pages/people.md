@@ -79,6 +79,7 @@ Justin Vaughn | Athens, GA
 Jonathan Shao | Beltsville, MD
 
 ## Guests
+
 Person | Role
 -------|------
 Scott Jackson | Complex Microbial Systems Group at NIST
