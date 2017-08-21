@@ -78,7 +78,14 @@ Amanda Hulse | Raleigh, NC
 Justin Vaughn | Athens, GA
 Jonathan Shao | Beltsville, MD
 
-## Office of National Programs Microbiome working group
+## Guests
+Person | Role
+-------|------
+Scott Jackson | Complex Microbial Systems Group at NIST
+Dariusz Swietlik | ARS Northeast Area Director
+Paul Wester | USDA National Agricultural Library Director
+
+## Office of National Programs microbiome working group
 
 Person | Role
 -------|------
