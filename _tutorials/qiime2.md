@@ -2,6 +2,7 @@
 title: "Amplicon analysis with QIIME2"
 excerpt: "An example workflow using QIIME2 version 2017.7"
 layout: single
+author: "Adam Rivers"
 
 ---
 By Adam Rivers, Designed from the official [QIIME2 tutorials](https://docs.qiime2.org/2017.7/tutorials/)
@@ -70,13 +71,11 @@ salloc -p microbiome -N 1 -t 40
 # different session number, e.g. "Xvfb :2"
 Xvfb :1 -screen 0 800x600x16 &
 
-
-
 # Add a Display variable to the local environment variables
 export DISPLAY=:1.0
 
 # Load the QIIME2 module
-module load qiime2
+module load qiime2/gcc/64/2.2017.7
 ```
 When you are done at the end of the tutorial end your session like this.
 ```bash
