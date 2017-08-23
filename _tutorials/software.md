@@ -1,12 +1,12 @@
 ---
 title: "Software to install before the microbiome workshop"
-excerpt: "Instructions for installing the required tutorial software in Windows, Mac and Ubuntu machines"
+excerpt: "Instructions for installing the required tutorial software on Windows, Mac and Ubuntu machines"
 layout: single
 author: "Adam Rivers"
 
 ---
 {% include toc %}
-Most of the tutorials that will be done at the microbiome workshop will be done remotely on Ceres, the high-performance computer, but some basic software is needed to connect and visualize the data we will be generating.  If you do not have administrator rights on your computer you may need to ask a departmental IT specialist to install a few programs for you before the meeting. Instructions for major operating systems are listed below.
+Most of the tutorials that will be done at the microbiome workshop will be done remotely on Ceres, the high-performance computer, but some basic software is needed to connect and visualize the data we will be generating.  If you do not have administrator rights on your computer you may need to ask a departmental IT specialist to install Docker for you before the meeting. All other programs should be usable without administrator rights. Instructions for major operating systems are listed below.
 
 
 # Windows:
@@ -17,10 +17,12 @@ Most of the tutorials that will be done at the microbiome workshop will be done 
 2. Google Chrome Browser
   * Needed for visualizing Qiime2 ad Anvi'o data efficiently
   * Available here: [https://www.google.com/chrome/](https://www.google.com/chrome/)
-3. Docker
+3. Bandage for viewing FASTG files
+  * Available here: [https://rrwick.github.io/Bandage/](https://rrwick.github.io/Bandage/)
+4. Docker (requires administrator rights)
   * Docker is a lightweight software container manager needed to run Anvi'o
   * Available here: [https://www.docker.com/docker-windows](https://www.docker.com/docker-windows)
-4. Anvi'o Docker image
+5. Anvi'o Docker image
   * Once Docker has been installed Anvi'o and all of its dependencies can be installed using Docker.
 
 ### Anvi'o installation
@@ -49,10 +51,12 @@ Open the Chrome browser enter ```localhost:8080``` in the address bar and press 
 2. Google Chrome Browser
   * Needed for visualizing Qiime2 ad Anvi'o data efficiently
   * Available here: [https://www.google.com/chrome/](https://www.google.com/chrome/)
-3. Docker
+3. Bandage for viewing FASTG files
+  * Available here: [https://rrwick.github.io/Bandage/](https://rrwick.github.io/Bandage/)
+4. Docker (requires administrator rights)
   * Docker is a lightweight software container manager needed to run Anvi'o
   * Available here: [https://www.docker.com/docker-mac](https://www.docker.com/docker-mac)
-4. Anvi'o Docker image
+5. Anvi'o Docker image
   * Once Docker has been installed Anvi'o and all of its dependencies can be installed using Docker.
 
 ### Anvi'o installation
@@ -81,7 +85,9 @@ Open the Chrome browser enter ```localhost:8080``` in the address bar and press 
 2. Google Chrome Browser
   * Needed for visualizing Qiime2 ad Anvi'o data efficiently
   * Available here: [https://www.google.com/chrome/](https://www.google.com/chrome/)
-3. Docker and Anvi'o
+3. Bandage for viewing FASTG files
+  * Available here: [https://rrwick.github.io/Bandage/](https://rrwick.github.io/Bandage/)
+3. Docker and Anvi'o (requires administrator rights)
   * Docker is a lightweight software container manager needed to run Anvi'o
   * Anvi'o is metagenomic analysis and visualization software
 
