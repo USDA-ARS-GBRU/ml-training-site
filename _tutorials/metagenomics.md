@@ -186,3 +186,27 @@ Although its not generally required, we can visualize our assemblies by generati
 megahit_toolkit contig2fastg 99 \
 data/megahit/intermediate_contigs/k99.contigs.fa > data/k99.fastg
 ```
+
+Download the file to  your local computer by opening a new Terminal window and coping the file
+
+```bash
+scp user.name@scinet-login.bioteam.net:~/metagenome1/data/]k99.fastg .
+```
+
+Now open Bandage and select **File > Open Graph** and load ```k99.fastg```
+
+Hit the **Draw Graph** button. Now all the Assembled contigs are visible. Some are circular come are linear and some have bubbles in the assembly.
+
+![Main Bandage Screen](/Microbiome-workshop/assets/metagenome/Bandage1.png)
+
+IF you have a Stand alone copy of [Blast+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) installed on your computer you can label the contigs with with the reference genomes.
+
+Download the reference fasta file here:
+Ref_database.fna : [Download](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/metagenome/Ref_database.fna)
+
+Select **Load from Fasta File** and load ```Ref_database.fna```
+
+Select **Run balst search** then **Close**
+![Blast options screen](/Microbiome-workshop/assets/metagenome/Bandage2.png)
+
+The contigs will now be taxonomically annotated. Take some time to explore the structure of the contigs. Which ones look correct? What kinds or errors are present in the assembly?
