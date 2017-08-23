@@ -19,9 +19,9 @@ Time | Event | Speaker/facilitator
 8:40 | Meeting goals and objectives | Brian Scheffler
 8:45 | Group introductions | All
 9:15 | Ceres and linux commands | Jonathan Shao
-9:45 | Overview of Amplicon sequencing | Adam Rivers
+9:45 | Overview of amplicon sequencing | Adam Rivers
 10:30 | Break
-10:45 | Group tutorial 1: Amplicon sequencing | All
+10:45 | Group tutorial 1: amplicon sequencing | All
 12:00 | Lunch. Attendee is responsible for lunch.
 1:00 | Amplicon sequencing tutorial continues | All
 3:00 | Break
@@ -41,8 +41,8 @@ Time | Event | Speaker/facilitator
 10:45 | Metagenomics Tutorial continues | All
 12:00 | Lunch. Attendee is responsible for lunch.
 1:00 | Metagenomics reproducibility and error  | Scott Jackson
-1:15 | Panel discussion on Benchmarking in Metagenomics  | Scott Jackson
-2:00 | Discussion of on Microbiome applications in agriculture  | All
+1:15 | Panel discussion on benchmarking in metagenomics  | Scott Jackson
+2:00 | Discussion of on microbiome applications in agriculture  | All
 3:00 | Break
 3:15 | Tutorial on differential expression in metatranscriptomes | All
 4:30 | Workshop wrap-up and survey
