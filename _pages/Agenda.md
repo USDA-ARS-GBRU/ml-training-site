@@ -40,7 +40,8 @@ Time | Event | Speaker/facilitator
 10:30 | Break
 10:45 | Metagenomics Tutorial continues | All
 12:00 | Lunch. Attendee is responsible for lunch.
-1:00 | Needs and opportunities with NIST | Scott Jackson
+1:00 | Metagenomics reproducibility and error  | Scott Jackson
+1:15 | Panel discussion on Benchmarking in Metagenomics  | Scott Jackson
 2:00 | Discussion of on Microbiome applications in agriculture  | All
 3:00 | Break
 3:15 | Tutorial on differential expression in metatranscriptomes | All

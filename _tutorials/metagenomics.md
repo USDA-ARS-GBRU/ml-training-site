@@ -23,14 +23,30 @@ Examples | [MG-Rast](http://metagenomics.anl.gov/) | [IMG from JGI](https://img.
 
 Many of the initial processing steps in metagenomics are quite computationally intensive. For this reason we will use two data sets in this tutorial: An initial dataset of a mock viral community containing a mixture of single and double stranded DNA viruses, and a second mock bacterial data set for the exploration of data in Anvi'o.
 
-If you are running this tutorial on the Ceres computer cluster the the data is available at:
+Viruses in Data Set 1 | Type
+---------------------|-----
+Cellulophaga_phage_phi13:1_514342768 | dsDNA
+Cellulophaga_phage_phi38_1_526177551 | dsDNA
+Enterobacteria_phage_phiX174_962637 | ssDNA
+PSA_HS2  | dsDNA
+Cellulophaga_phage_phi18_1_526177061 | dsDNA
+Cellulophaga_phage_phi38_2_514343001 | dsDNA
+PSA_HM1 | dsDNA
+PSA_HS6 | dsDNA
+Cellulophaga_phage_phi18_3_526177357 | dsDNA
+Enterobacteria_phage_alpha3_194304496 | ssDNA
+PSA_HP1 | dsDNA
+PSA_HS9 | dsDNA
+
+If you are running this tutorial on the Ceres computer cluster the the data are available at:
+
  ```bash
  # Mock viral files
  /project/microbiome_workshop/metagenome/viral
 
- # anvi'o files
+ # Anvi'o files
   /project/microbiome_workshop/metagenome/mapping
-
+```
 
 # Connecting to Ceres
 
@@ -61,6 +77,7 @@ export DISPLAY=:1.0
 module load bbtools/gcc/64/37.02
 module load megahit/gcc/64/1.1.1
 ```
+
 When you are done at the end of the tutorial end your session like this.
 ```bash
 # to log off shut down the graphics window
@@ -69,4 +86,103 @@ killall Xvfb
 exit
 # sign out of Ceres head node
 exit
+```
+
+# Part 1: Assembly and mapping
+Create a directory for the tutorial
+```bash
+# In your homespace or other desired location, make a
+# directory and move into it
+mkdir metagenome1
+cd metagenome1
+# make a data directory
+mkdir data
+```
+
+
+The data file we will be working with is here:
+```bash
+/project/microbiome_workshop/metagenome/viral/10142.1.149555.ATGTC.shuff.fastq.gz
+```
+Lets take a peek at the data.
+```bash
+zcat /project/microbiome_workshop/metagenome/viral/10142.1.149555.ATGTC.shuff.fastq.gz | head
+```
+The output should look like this:
+```
+@MISEQ05:522:000000000-ALD3F:1:1101:22198:19270 1:N:0:ATGTC
+ATGTTCTGAATTAAGCAGGCGGTTTCCATTAATTACCTTTTCCTCTTCCTCTAATCCTATTATGAGATTTTTGAGTAAACTTATTTCTAATTCTGTTGTTTTTATAGCTGTAGTTAAAGCTTCAGATTCTTCATCTGAAACTTTAGTATCT
++
+CCDBCFFFFFFFGGGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHGHHHHHHHHHHHHHHHHHHHHHHHHHHGGGHHHHHHHGHHHHHHHHHHHHHHHHHHHGHHHGHHHHHHHHHHHHHHHHHHHHHHHHHFHHGHHHHHHHHHHGHHFH
+@MISEQ05:522:000000000-ALD3F:1:1101:22198:19270 2:N:0:ATGTC
+GAGGAATGGTTTGTCTCCTAAAATTGATGAAAGTAGTATTCAAATTTCAGGATTAAAAGGAGTTTCTATTTTGTCTATTGCTTATGATATTAATTATTTAGATACTAAAGTTTCAGATGAAGAATCTGAAGCTTTAACTACAGCTATAAAA
++
+BAACCFFFFFFFGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHGHHGHHIHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHEHHHHHHHHHHGHGHHHHHHHGHGHHHHHFHH
+@MISEQ05:522:000000000-ALD3F:1:1105:15449:9605 1:N:0:ATGTC
+TGCTACTACCACAAGCTTCACACGCTAAGGGCACTGCAATATTATAGCTACAATAATGGCAACGCAATTGTTTTTTATGCTGATGATACGTTAGACTTACATCACAATTAGGACATTGCGGAGAATGCCCACACGTAGTACATTCCATGAT
+```
+We can see that this data are interleaved, paired-end based on the the "1" and "2 "after the initial identifier. From the identifier and the length of the reads we can see that the data was sequenced in 2x150 mode on an Illumina MiSeq instrument.
+
+For speed we will be subsampling our data. the original fasta file has been shuffled to get a random sampling of reads.  To subsample we will use zcat to unzip the file and stream the data out. That data stream will be "piped" (sent to) the program head which will display the first 2 million lines and that displayed text will be written to a file with the ">" operator.
+
+```bash
+# Take a subset 500,000 reads of the data
+zcat /project/microbiome_workshop/metagenome/viral/10142.1.149555.ATGTC.shuff.fastq.gz \
+| head -n 2000000 | gzip  > data/10142.1.149555.ATGTC.subset_500k.fastq.gz
+```
+
+Raw sequencing data needs to be processed to remove artifacts. The first step in
+this process is to remove contaminant sequences that are present in the sequencing process such as PhiX which is sometimes added as an internal control for sequencing runs.
+
+```bash
+# Filter out contaminant reads placing them in their own file
+bbduk.sh in=data/10142.1.149555.ATGTC.subset_500k.fastq.gz \
+out=data/10142.1.149555.ATGTC.subset_500k.unmatched.fq.gz \
+outm=data/10142.1.149555.ATGTC.subset_500k.matched.fq.gz \
+k=31 \
+hdist=1 \
+ftm=5” \
+ref=sequencing_artifacts.fa.gz \
+stats=data/contam_stats.txt
+
+```
+With shotgun paired end sequencing the size of the DNA sequenced is controlled by physically shearing the DNA and selecting DNA of a desired length with SPRI or Ampure beads.  This is an imperfect process and sometimes short pieces of DNA are sequenced.  If the DNA is shorter than the sequencing length (150pb in this case) The other adapter will be sequenced too.
+
+We can trim off this adapter using bbduk.
+```bash
+# Trim the adapters using the reference file adaptors.fa (provided by bbduk)
+bbduk.sh in=data/10142.1.149555.ATGTC.subset_500k.unmatched.fq.gz \
+out=data/10142.1.149555.ATGTC.subset_500k.fastq.trimmed.gz \
+ktrim=r \
+k=23 \
+mink=11 \
+hdist=1 \
+tbo=t
+ref=adaptors.fa
+```
+At this point we could quality trim the right end of the reads but since we are going to merge them some of these low quality reads will likely be fixed so lets skip this for now.
+
+```bash
+# Merge the reads together
+bbmerge.sh in=data/10142.1.149555.ATGTC.subset_500k.fastq.trimmed.gz \
+out=data/10142.1.149555.ATGTC.subset_500k.fastq.merged.gz \
+outu=../data/10142.1.149555.ATGTC.subset_500k.unmerged.fastq.gz \
+usejni=t
+```
+Assemble the metagenome with the Succinct DeBruijn graph assembler Megahit
+```bash
+megahit  -m 20000000000 \
+-t 2 \
+--read data/10142.1.149555.ATGTC.subset_500k.merged.fastq.gz \
+--12 data/10142.1.149555.ATGTC.subset_500k.unmerged.fastq.gz \
+--k-list 21,41,61,81,99 \
+--no-mercy \
+--min-count 2 \
+--out-dir data/megahit/
+```
+Although its not generally required, we can visualize our assemblies by generating a fastg file
+
+```bash
+megahit_toolkit contig2fastg 99 \
+data/megahit/intermediate_contigs/k99.contigs.fa > data/k99.fastg
 ```

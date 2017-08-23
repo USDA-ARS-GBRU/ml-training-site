@@ -197,6 +197,8 @@ Output:
 
 Okay, we have just done the hard part of amplicon sequence analysis.  At this point we have our BIOM count table, the representative sequence variants and a stats file for Deblur.
 
+We have just called sequence variants two different ways. In a real workflow you would only use one method.  From here on out we will use the output of dada2 only: ```table-dada2.qza```.  
+
 # Adding metadata and examining count tables
 
 ```bash
