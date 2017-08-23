@@ -35,13 +35,13 @@ Docker will download the images and start a container.
 
 You should now see a funny cursor that looks like this telling you you are in a container:
 
-```bash
- :: anvi\'o ::  / >>>
+```
+ :: anvi'o ::  / >>>
 ```
 
 You can test your installation using the following command:
-```bash
-:: anvi\`o ::  / >>> anvi-self-test
+```
+:: anvi`o ::  / >>> anvi-self-test
 ```
 Open the Chrome browser enter ```localhost:8080``` in the address bar and press enter. A web application for visualizing the test data will appear.
 
@@ -69,13 +69,13 @@ Docker will download the images and start a container.
 
 You should now see a funny cursor that looks like this telling you you are in a container:
 
-```bash
-:: anvi\'o ::  / >>>
+```
+:: anvi'o ::  / >>>
 ```
 
 You can test your installation using the following command:
-```bash
-:: anvi\`o ::  / >>> anvi-self-test
+```
+:: anvi`o ::  / >>> anvi-self-test
 ```
 Open the Chrome browser enter ```localhost:8080``` in the address bar and press enter. A web application for visualizing the test data will appear.
 
@@ -112,12 +112,12 @@ sudo docker run --rm -it meren/anvio:latest
 ```
 You should now see a funny cursor that looks like this telling you you are in a container:
 
-```bash
- :: anvi\'o ::  / >>>
+```
+ :: anvi'o ::  / >>>
 ```
 
 You can test your installation using the following command:
-```bash
-:: anvi\`o ::  / >>> anvi-self-test
+```
+:: anvi`o ::  / >>> anvi-self-test
 ```
 Open the Chrome browser enter ```localhost:8080``` in the address bar and press enter. A web application for visualizing the test data will appear.
