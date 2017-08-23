@@ -45,6 +45,8 @@ You can test your installation using the following command:
 ```
 Open the Chrome browser enter ```localhost:8080``` in the address bar and press enter. A web application for visualizing the test data will appear.
 
+You can close a docker instance by typing ```exit```.
+
 # Mac:
 1. Terminal
   * built in
@@ -79,7 +81,10 @@ You can test your installation using the following command:
 ```
 Open the Chrome browser enter ```localhost:8080``` in the address bar and press enter. A web application for visualizing the test data will appear.
 
+You can close a docker instance by typing ```exit```.
+
 # Ubuntu/Debian Linux:
+
 1. Terminal
   * built in
 2. Google Chrome Browser
@@ -92,6 +97,7 @@ Open the Chrome browser enter ```localhost:8080``` in the address bar and press 
   * Anvi'o is metagenomic analysis and visualization software
 
 ### Docker and Anvi'o installation
+
 With Linux you can install docker with a package manager like apt-get
 
 ```bash
@@ -121,3 +127,5 @@ You can test your installation using the following command:
 :: anvi`o ::  / >>> anvi-self-test
 ```
 Open the Chrome browser enter ```localhost:8080``` in the address bar and press enter. A web application for visualizing the test data will appear.
+
+You can close a docker instance by typing ```exit```.

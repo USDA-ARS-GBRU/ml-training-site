@@ -1,5 +1,5 @@
 ---
-title: "Metagenomics tutorial"
+title: "Metagenomics tutorial Part 1: Quality control, Assembly and mapping"
 excerpt: "An example workflow for assembly based metagenomics"
 layout: single
 author: "Adam Rivers"
@@ -21,7 +21,7 @@ Examples | [MG-Rast](http://metagenomics.anl.gov/) | [IMG from JGI](https://img.
 
 # Data sets in this tutorial
 
-Many of the initial processing steps in metagenomics are quite computationally intensive. For this reason we will use two data sets in this tutorial: An initial dataset of a mock viral community containing a mixture of single and double stranded DNA viruses, and a second mock bacterial data set for the exploration of data in Anvi'o.
+Many of the initial processing steps in metagenomics are quite computationally intensive. For this reason we will use two data sets in this tutorial: In part 1 we will use dataset of a mock viral community containing a mixture of single and double stranded DNA viruses.
 
 Viruses in Data Set 1 | Type
 ---------------------|-----
@@ -210,3 +210,44 @@ Select **Run balst search** then **Close**
 ![Blast options screen](/Microbiome-workshop/assets/metagenome/Bandage2.png)
 
 The contigs will now be taxonomically annotated. Take some time to explore the structure of the contigs. Which ones look correct? What kinds or errors are present in the assembly?
+
+If we go back to the Ceres command line we can continue with the next common step in read based assembly, mapping. Two common types of mapping can  occur. you can map reads back to a known reference.  This is great if you have closely related organisms of interest and you are trying to understand population variance or quantify known organims.  A number of programs can be used  for mapping. Bowtie2 is the most common but in this case we will use bbmap.
+
+Map reads back to known reference
+```bash
+bbmap.sh \
+  ref=/project/microbiome_workshop/metagenome/viral/data/Ref_database.fna \
+  in=data/10142.1.149555.ATGTC.subset_500k.fastq.trimmed.gz \
+  out=data/10142.1.149555.ATGTC.map_to_genomes.sam \
+  nodisk \
+  usejni=t \
+  bamscript=bamscript1.sh
+```
+The mapper writes Text based sam mapping files. It's usually helpful to convert
+these files to a binary format called bam which is faster to access and smaller. Fortunately, bbmap will automatically make a little script to do that for us using the program Samtools. To run it enter this command.
+```bash
+./bamscript1.sh
+```
+
+It is also possible to map reads back to the contigs we just generated. Reads are mapped back to contigs for several reasons. Once genes are called gene counts can be derived from mapping data.  Contig mapping data is also used in genome binning.
+
+Map reads back to known reference
+```bash
+bbmap.sh \
+  ref=data/megahit/final.contigs.fa \
+  in=data/10142.1.149555.ATGTC.subset_500k.fastq.trimmed.gz \
+  out=data/10142.1.149555.ATGTC.map_to_contigs.sam \
+  nodisk \
+  usejni=t \
+  bamscript=bamscript2.sh
+```
+
+The mapper writes Text based sam mapping files. It's usually helpful to convert
+these files to a binary format called bam which is faster to access and smaller. Fortunately, bbmap will automatically make a little script to do that for us using the program Samtools. To run it enter this command.
+```bash
+./bamscript2.sh
+```
+
+Part one of the metagenome assembly tutorial deals with the most of the heavy computational work that requires computers with high memory and many processors. In real applications this kind of work would be submitted as a batch job using the SLURM scheduler so that it can run without your being logged into Ceres.
+
+The next major of an Aseembly based workflow involves calling genes, annotating genes and binning contigs into genomes.  We will address this in Par2 of the metagenomics tutorial.
