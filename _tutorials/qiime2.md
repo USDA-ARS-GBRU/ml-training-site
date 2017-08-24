@@ -92,8 +92,8 @@ exit
 ```bash
 # In your homespace or other desired location, make a
 # directory and move into it
-mkdir QIIME2-phosphate-tutorial
-cd QIIME2-phosphate-tutorial
+mkdir qiime2-phosphate-tutorial
+cd qiime2-phosphate-tutorial
 ```
 
 # Understanding QIIME2 files
@@ -110,6 +110,10 @@ time qiime tools import \
   --source-format PairedEndFastqManifestPhred33
 ```
 Time to run: 2 minutes
+
+What's this `time` thing? You can add the `time` command to any command line task
+ to see how long it took to run.
+ {: .notice--info}
 
 Output:
 * ```demux.qza```
@@ -163,7 +167,7 @@ time qiime dada2 denoise-paired \
 ```
 To submit this command using Sbatch:
 ```bash
-sbatch /project/microbiome_workshop/amplicon/example/QIIME2-phosphate-tutorial/dada2.sh
+sbatch /project/microbiome_workshop/amplicon/example/qiime2-phosphate-tutorial/dada2.sh
 ```
 Time to run: 35 minutes
 
@@ -184,7 +188,7 @@ Deblur only uses forward reads at this time. You could get around this by mergin
 
 To submit this command using Sbatch:
 ```bash
-sbatch /project/microbiome_workshop/amplicon/example/QIIME2-phosphate-tutorial/deblur.sh
+sbatch /project/microbiome_workshop/amplicon/example/qiime2-phosphate-tutorial/deblur.sh
 ```
 Time to run: 4 minutes
 
@@ -279,7 +283,7 @@ Database | Description | License
 
 There are several methods of taxonomic classification available. The most commonly used classifier is the [RDP classifier](https://rdp.cme.msu.edu/classifier/classifier.jsp). Other software includes [SINTAX](http://www.drive5.com/usearch/manual/cmd_sintax.html) and [16S classifier](http://metabiosys.iiserb.ac.in/16Sclassifier/). We will be using the QIIME2's built-in naive Bayesian classifier (which is built on Scikit-learn but similar to RDP), noting that the method, while fast and powerful, has a tendency  [over-classify](http://www.drive5.com/usearch/manual/tax_err.html) reads.
 
-There are two steps to taxonomic classification: [training the classifier](https://docs.QIIME2.org/2017.7/tutorials/feature-classifier/) (or using a [pre-trained](https://docs.QIIME2.org/2017.7/data-resources/) dataset) and classifying the sequence variants.  Generally it is best to train the classifier on the exact region of the 16S, 18S or ITS you sequenced.
+There are two steps to taxonomic classification: [training the classifier](https://docs.qiime2.org/2017.7/tutorials/feature-classifier/) (or using a [pre-trained](https://docs.qiime2.org/2017.7/data-resources/) dataset) and classifying the sequence variants.  Generally it is best to train the classifier on the exact region of the 16S, 18S or ITS you sequenced.
 For this tutorial we will be using a classifier model trained on the Silva 99% database trimmed to the V4 region.
 
 ```bash
@@ -317,7 +321,7 @@ Output:
 * ```taxa-bar-plots.qzv``` [View](https://view.qiime2.org/?src=https%3A%2F%2Fusda-ars-gbru.github.io%2FMicrobiome-workshop%2Fassets%2Fqiime%2Ftaxa-bar-plots.qzv) \| [Download](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/qiime/taxa-bar-plots.qzv)
 
 
-Looking at the the ```taxonomy.qzv``` file using https://view/QIIME2.org We can see the data presented at different taxonomic levels and grouped by different experimental factors. If we drill down to taxonomic level 5 something looks a bit odd. There's lots of "Rickettsiales;f__mitochondria".  This is really  plant mitochondrial contamination. Some of these samples also have chloroplast contamination.  This kind of Taxonomic filtering isn't available in QIIME2 yet but it can be be done manually.
+Looking at the the ```taxonomy.qzv``` file using https://view/qiime2.org We can see the data presented at different taxonomic levels and grouped by different experimental factors. If we drill down to taxonomic level 5 something looks a bit odd. There's lots of "Rickettsiales;f__mitochondria".  This is really  plant mitochondrial contamination. Some of these samples also have chloroplast contamination.  This kind of Taxonomic filtering isn't available in QIIME2 yet but it can be be done manually.
 
 ## Filtering contaminants
 By viewing the ```taxonomy.qzv``` file in the browser we can easily search for the sequence ID's that do or do not match "mitochondria or chloroplast". We can also do this via the command line:
@@ -425,7 +429,7 @@ The problem is challenging for several reasons:
 * The data is sparse and some 0's mean a taxa is not present while other zeros mean an organism is present at a level below the limit of detection for the sequences sampled.
 * Each library is sampled to a different depth so the issue of how to standardize the data comes up (simply dividing by the sum does not work).
 
-**To rarefy or not to rarefy?** It is a common but controversial practice to downsample count data to the lowest count in your dataset to get around the issue of differential sequencing depth. In their paper titled "Waste not want not, why rarifying microbiome data is inadmissible" [McMurdie et al. (2014)](https://doi.org/10.1371/journal.pcbi.1003531) point out that this is a large waste of data and statistical power, and advocate for using differential expression software like DESeq2 that uses special normalizations and a negative binomial distribution to model data. The software uses a generalized linear model so it has a very flexible experimental design interface.  [Weiss et al. (2017)](https://doi.org/10.1186/s40168-017-0237-y) argue that the assumptions underling both the normalization and the distribution used by DEseq2 and other normalization methods are inappropriate for microbiome data. [Ancom](https://dx.doi.org/10.3402%2Fmehd.v26.27663) uses a zero inflated Gaussian model but only allows for simple two-way comparisons not richer statistical models. Gneiss [(paper)](http://doi.org/10.1128/mSystems.00162-16), [(tutorial)](https://forum.QIIME2.org/t/gneiss-tutorial/932) is currently the only compositional method available in QIIME2 (support for ANCOM was dropped).  The only thing everyone agrees on is that agrees you can't just do a T-test.
+**To rarefy or not to rarefy?** It is a common but controversial practice to downsample count data to the lowest count in your dataset to get around the issue of differential sequencing depth. In their paper titled "Waste not want not, why rarifying microbiome data is inadmissible" [McMurdie et al. (2014)](https://doi.org/10.1371/journal.pcbi.1003531) point out that this is a large waste of data and statistical power, and advocate for using differential expression software like DESeq2 that uses special normalizations and a negative binomial distribution to model data. The software uses a generalized linear model so it has a very flexible experimental design interface.  [Weiss et al. (2017)](https://doi.org/10.1186/s40168-017-0237-y) argue that the assumptions underling both the normalization and the distribution used by DEseq2 and other normalization methods are inappropriate for microbiome data. [Ancom](https://dx.doi.org/10.3402%2Fmehd.v26.27663) uses a zero inflated Gaussian model but only allows for simple two-way comparisons not richer statistical models. Gneiss [(paper)](http://doi.org/10.1128/mSystems.00162-16), [(tutorial)](https://forum.qiime2.org/t/gneiss-tutorial/932) is currently the only compositional method available in QIIME2 (support for ANCOM was dropped).  The only thing everyone agrees on is that agrees you can't just do a T-test.
 {: .notice--warning}
 
 
