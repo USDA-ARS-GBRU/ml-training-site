@@ -47,7 +47,7 @@ If you are running this tutorial on the Ceres computer cluster the data are avai
 
 Ceres is the computer cluster for the USDA Agricultural Research Service's SCInet computing environment. From Terminal or Putty (for Windows users) create a secure shell connection to Ceres
 ```bash
-ssh -X <user.name>@scinet-login.bioteam.net
+ssh <user.name>@login.scinet.science
 ```
 Once you are logged into Ceres you can request access to an interactive node.
 In a real analysis you would create a script that runs all the commands in sequence and submit the script through a program called Sbatch, part of the computer's job scheduling software named Slurm.
@@ -57,7 +57,7 @@ To request access to an interactive node:
 # Request access to one node of the cluster
 # Note that "microbiome" is a special queue for the workshop,
 # to see available queues use the command "sinfo"
-salloc -p microbiome -N 1 -t 40
+salloc -p microbiome -N 1 -n 40 -t 04:00:00
 
 # Load the required modules
 module load bbtools/gcc/64/37.02
@@ -502,6 +502,7 @@ N Rate:          	  0.8519% 	     2082 	  0.1224% 	       45286
 ```
 
 As we did before we will convert the sam file to a bam file.
+
 ```bash
 ./bamscript2.sh
 ```

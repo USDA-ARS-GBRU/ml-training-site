@@ -17,14 +17,15 @@ written by A. Murat Eren (Meren) and modified and reposted with permission by Ad
 # Using Anvi'o
 
 Anvi'o is a Python package that runs a web server for interactive visualization.
- For the tutorial we will be running Anvi'o on Ceres. To interact with Anvio's
- web interface we need to take an extra step while connecting to "port" the web application from the server. The instructions for SSH into Ceres are slightly different:
+ For the tutorial we will be running Anvi'o on Ceres.
 
 ```bash
-ssh -L 8080:localhost:8080 user.name@scinet-login.bioteam.net
-
+ssh <user.name>@login.scinet.science
 ```
-The translation of this line is this: “forward any connection request goes to my local port 8080, to the port 8080 on localhost of the server scinet-login.bioteam.net”. Of course nothing is listening to the port 8080 on the server at this moment, but we will tell anvi’o to serve from there when we run `anvi-interactive` later in the tutorial.
+Request a compute node
+```bash
+salloc -p microbiome -N 1 -n 40 -t 04:00:00 # Change the wall time as per requirement
+```
 
 Load Anvi'o version 2.4.0 (It is  a python module loaded with this command) and its required dependencies.
 
@@ -308,32 +309,56 @@ You can use `anvi-export-collection` to export collection information and import
 
 Anvi'o interactive interface is one of the most sophisticated parts of Anvi'o. In the context of the metagenomic workflow, the interactive interface allows you to browse your data in an intuitive way as it shows multiple aspects of your data, visualize the results of unsupervised binning, perform supervised binning, or refine existing bins.
 
+
 {:.notice}
 The interactive interface of Anvi'o is written from scratch, and can do much more than what is mentioned above. In fact, you don't even need Anvi'o profiles to visualize your data using the interactive interface. But since this is a tutorial for the metagenomic workflow, we will save you from these details. If you are intersted to learn more, we have other resources that provide **detailed descriptions of [the Anvi'o interactive interface and data formats it works with](http://merenlab.org/2016/02/27/the-anvio-interactive-interface/)**.
 
 {:.notice}
 Most things you did so far (creating a contigs database, profiling your BAM files, merging them, etc) required you to work on a server. But `anvi-interactive` will require you to dig an SSH tunnel to use your server to run `anvi-interactive`, and the browser on your computer to interact with it. See the post on **[visualizing from a server](http://merenlab.org/2015/11/28/visualizing-from-a-server/)**.
 
-This is the simplest way to run the interactive interface on your merged Anvi'o profile:
+To run Anvi'o on a compute node we have to to take some special steps, launching anvi-interactive in the background with the `&` sign.
+
 
 ```bash
-anvi-interactive -p SAMPLES-MERGED/PROFILE.db -c contigs.db
+anvi-interactive -p SAMPLES-MERGED/PROFILE.db -c contigs.db &
 ```
 
+Now wait until you see the string:
+```
+The server is now listening the port number "8080". When you are finished, press CTRL+C to terminate the server.
+```
+
+Now that the server is running, make a note of the hostname
+
+```bash
+hostname -s  
+```
+
+On your local machine, launch Chrome browser and go to [http://cereslogin.its.iastate.edu/hostname](http://cereslogin.its.iastate.edu/hostname) (Replace hostname with the hostname of your compute node: sn-cn-x-x). Note: Firefox and Internet Explorer are not supported, Safari seems to work but Chrome is preferred.
+
+If you get “502 Bad Gateway”  ; you either
+* did not wait for the string appear to know that the webserver was running,
+* you mistyped the URL, or
+* you have the wrong hostname
+
+After you have completed your tasks, make sure to terminate the instance of web server that you launched on the compute nodes.
+```bash
+killall anvi-interactive
+```
 This will work perfectly **if your merged profile has its own trees** (i.e., the hierarchical clustering mentioned in the `anvi-merge` section was done).
 
 
 If there are no clusterings available in your profile database `anvi-interactive` will complain about the fact that it can't visualize our profile. But if you have an Anvi'o collection stored in your profile database you can run the interactive interface in **collection mode**. If you are not sure whether you have a collection or not, you can see all available collections using this command:
 
-{% highlight bash %}
+```bash
 $ anvi-script-get-collection-info -p SAMPLES-MERGED/PROFILE.db -c contigs.db --list-collections
-{% endhighlight %}
+```
 
 Once you know the collection you want to work with, you can use this notation to visualize it:
 
-{% highlight bash %}
+```
 $ anvi-interactive -p SAMPLES-MERGED/PROFILE.db -c contigs.db -C CONCOCT
-{% endhighlight %}
+```
 
 When you run `anvi-interactive` with a collection name, it will compute various characteristics of each bin on-the-fly, i.e., their mean coverage, variability, completion and redundancy estimates, and generate Anvi'o views for them to display their distribution across your samples in the interactive interface. Briefly, each *leaf* of the Anvi'o central dendrogram will represent a "bin" in your collection, instead of a "contig" in your metagenomic assembly. A dendrogram for bins will be generated for each view using euclidean distance and ward linkage automatically. When running the interactive interface in collection mode, you can change those defaults using the `--distance` and/or `--linkage` parameters. If you have run `anvi-merge` with `--skip-hierarchical-clustering` parameter due to the large number of contigs you had, but if you have binning results available to you from an external resource, you can import those bins as described in the previous section, and run the interactive interface with that collection id to immediately see the distribution of bins across your samples.
 
