@@ -295,9 +295,8 @@ All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e
 
 
 
-Assembly |                  final.contigs
+Assembly |final.contigs
 ---------|-----------------------------
-
 \# contigs (>= 0 bp)      |1360
 \# contigs (>= 1000 bp)   |1011
 Total length (>= 0 bp)   |4993279
