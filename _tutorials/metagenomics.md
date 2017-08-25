@@ -430,7 +430,7 @@ Ins Rate:        	  7.7478% 	     9109 	  0.1730% 	       31412
 N Rate:          	  0.2705% 	      318 	  0.0794% 	       14426
 ```
 
-The mapper writes Text based sam mapping files. It's usually helpful to convert
+The mapper writes text-based sam mapping files. It's usually helpful to convert
 these files to a binary format called bam which is faster to access and smaller. Fortunately, bbmap will automatically make a little script to do that for us using the program Samtools. To run it enter this command.
 
 ```bash
@@ -453,7 +453,7 @@ bbmap.sh \
 ```
 Time to run: 1 minute
 
-With the contigs the match rate was much higher. Wave assembled most of this data.
+With the contigs the match-rate was much higher. 95% of our reads map back to the assembly which is a very high number. in a well assembled complex metagenome we might expect 50-70% of reads to map.
 
 ```
 Pairing data:   	pct reads	num reads 	pct bases	   num bases
