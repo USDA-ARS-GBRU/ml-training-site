@@ -284,7 +284,7 @@ Time to run: 3 minutes
 
 # Looking at the assembly
 
-Megahit tells us that the longest contig was 129514 bp and the N50 was 6252 bp. we can use Quast to look at the assembly more.
+Megahit tells us that the longest contig was 129514 bp and the N50 was 6252 bp. We can use Quast to look at the assembly more.
 
 ```bash
 quast.py -o data/quast -t 4 -f --meta data/megahit3/final.contigs.fa

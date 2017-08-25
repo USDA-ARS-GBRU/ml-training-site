@@ -134,7 +134,7 @@ time qiime demux summarize \
 This will create a visualization file. You can download the file to your local computer. From a new terminal window on your local computer copy the file:
 
 ```bash
-scp <user.name>@scinet-login.bioteam.net:/path/to/data .
+scp <user.name>@login.scinet.science:/path/to/data .
 ```
 
 Now you can view the file on your local computer using the [QIIME2 visualization server](https://view.qiime2.org).  Alternatively you can view the precomputed file on that server using the button above.
