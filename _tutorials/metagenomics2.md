@@ -170,7 +170,7 @@ anvi-get-dna-sequences-for-gene-calls -c CONTIGS.db -o gene-calls.fa
 ```
 Then run Centrifuge with the following command:
 ```bash
-/project/microbiome_workshop/metagenome/anvio/bin/centrifuge -f \
+/project/microbiome_workshop/metagenome/anvio/bin/centrifuge/centrifuge -f \
    -x /project/microbiome_workshop/metagenome/anvio/bin/centrifuge_data/p_compressed+h+v \
    gene-calls.fa -S centrifuge_hits.tsv
 ```
@@ -334,7 +334,7 @@ Now that the server is running, make a note of the hostname
 hostname -s  
 ```
 
-On your local machine, launch Chrome browser and go to [http://cereslogin.its.iastate.edu/hostname](http://cereslogin.its.iastate.edu/hostname) (Replace hostname with the hostname of your compute node: sn-cn-x-x). Note: Firefox and Internet Explorer are not supported, Safari seems to work but Chrome is preferred.
+On your local machine, launch Chrome browser and go to [http://cereslogin.its.iastate.edu/hostname](http://cereslogin.its.iastate.edu/hostname) (Replace hostname with the hostname of your compute node: sn-cn-x-x). Note: Firefox and Internet Explorer are not supported, Safari seems to work but Chrome is preferred. This link is a workaround for the workshop and may be replaced at some point in the future.
 
 If you get “502 Bad Gateway”  ; you either
 * did not wait for the string appear to know that the webserver was running,
