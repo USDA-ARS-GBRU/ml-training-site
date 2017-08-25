@@ -15,8 +15,8 @@ The most widely used software may be QIIME 1. QIIME 1 is a collection of
 custom tools and wrappers around other software that makes it easy to customize amplicon
 analysis, but that flexibility sometimes makes it hard to track the provenance
 of data or be sure you are doing the right thing. QIIME 2 has a very
-different model for data analysis wraps data and information about that data
-into one object that addresses some of these shortcomings. QIIME 2 also
+different model for data analysis that wraps data and information about that data
+into one object, which addresses some of the prior shortcomings. QIIME 2 also
 incorporates a major advance that has happened in the last year: the use of
 exact "Sequence Variants" (SV) rather than "Operational Taxonomic Units" (OTU).
 Finally QIIME 2 still has a great development team behind it and is poised to
@@ -29,7 +29,7 @@ teaching QIIME 2 while it is still in its pre-release stage (Don't you feel hi-t
 For this tutorial We will be looking at data from this paper:
 > Castrillo, G., Teixeira, P.J.P.L., Paredes, S.H., Law, T.F., de Lorenzo, L., Feltcher, M.E., Finkel, O.M., Breakfield, N.W., Mieczkowski, P., Jones, C.D., Paz-Ares, J., Dangl, J.L., 2017. Root microbiota drive direct integration of phosphate stress and immunity. Nature 543, 513–518. [doi:10.1038/nature21417](https://dx.doi.org/10.1038/nature21417)
 
-The authors knocked out the function different genes involved in the phosphate stress response of *Arabidopsis thaliana*. In two experiments they grew the mutants in natural soil, sequenced the 16S V4 region and found that the disruption of phosphate regulation genes altered the microbial community of the plants.  We will be analyzing this data in several different ways and comparing our results.
+The authors knocked out the function of different genes involved in the phosphate stress response of *Arabidopsis thaliana*. In two experiments they grew the mutants in natural soil, sequenced the 16S V4 region and found that the disruption of phosphate regulation genes altered the microbial community of the plants.  We will be analyzing this data in several different ways and comparing our results.
 
 If you are running this tutorial on the Ceres computer cluster the the data is available at:
  ```bash

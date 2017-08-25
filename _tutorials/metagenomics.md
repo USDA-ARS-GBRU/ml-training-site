@@ -14,7 +14,7 @@ Method | Read-based | Assembly-based | Detection-based
 -------|------------|----------------|----------------
 Description | Read-based metagenomics analyzes unassembled reads. It was one of the first methods to be used. It is still valuable for quantitative analysis, especially if relevant references are available. | Assembly-based workflows attempt to assemble the reads from one or more samples, "bin" contigs from these samples into genomes then analyze the genes and contigs. | Detection-based workflows attempt to identify with very high-precision but lower sensitivity (recall) the presence of organisms of interest, often pathogens.
 Typical workflow | 1. Read QC.<br>2. Read merging (Bbmerge).<br>3. Mapping to NR for taxonomy data (Blast, Diamond or Last). Kmer-based approaches are also used (Kraken, Clarke).<br> 4. Mapping to functional databases (Kegg, Pfam). Cross-mapping can also be used (Mocat2).<br> 5. Summaries of taxonomic and functional distributions can be analyzed. If read IDs were retained function within taxa analyses can be run.<br> | 1. Read QC.<br>2. Read merging.<br>3. Read assembly. (Megahit, Spades-meta). Generally individual samples are assembled.  Memory use is an issue. Read-error correction and normalization can help.<br> 4. Mapping of reads reads from each sample are mapped back to the contigs from all samples for use in quantification and binning (bowtie2, bbmap).<br> 5. Genome binning. Contig composition and mapping data are used to bin contigs into "genome bins" (Metabat, MaxBin, Concoct).<br> 6.  <em>De-novo</em> gene annotation is done (Prodigal, MetaGeneMArk). Gene annotation is performed as in read-centric approaches, but computational burden is lower since annotated data is ~100x smaller.<br> 7. Analysis of genome bins, functional gene phylogenetics, comparative genomics. | 1. Read QC<br>2. Read merging (if paired) <br> 3. Alignment or kmer based matching against curated dataset.<br> 4. Heuristics for determining the correct level to classify at and the  classification (Megan-LCA, Clarke, Surpi, Centrifuge, proprietary methods).
-Typical questions|&bull; What it the bulk taxonomic/functional composition of these samples?<br>&bull; What new kinds of a particular functional gene family can I find?<br>&bull; How do my sites or treatments differ in taxonomic/functional composition?<br> |&bull; What are the functional and metabolic capabilities of specific microbes in my sample?<br>&bull; What is the phylogeny of gene families in my samples?<br>&bull; Do the organisms that inhabit my samples differ?<br>&bull; Are there variants within taxa in my population? | &bull; Are known organisms of interest present in my sample?<br> &bull; Are known functional genes e.g. beta-lactamases, present in my sample?<br>
+Typical questions|&bull; What is the bulk taxonomic/functional composition of these samples?<br>&bull; What new kinds of a particular functional gene family can I find?<br>&bull; How do my sites or treatments differ in taxonomic/functional composition?<br> |&bull; What are the functional and metabolic capabilities of specific microbes in my sample?<br>&bull; What is the phylogeny of gene families in my samples?<br>&bull; Do the organisms that inhabit my samples differ?<br>&bull; Are there variants within taxa in my population? | &bull; Are known organisms of interest present in my sample?<br> &bull; Are known functional genes e.g. beta-lactamases, present in my sample?<br>
 Examples | [MG-Rast](http://metagenomics.anl.gov/) | [IMG from JGI](https://img.jgi.doe.gov/cgi-bin/mer/main.cgi) | [Taxonomer](http://taxonomer.iobio.io/), [Surpi](http://chiulab.ucsf.edu/surpi/), [One Codex](https://www.onecodex.com/), [CosmosID](http://www.cosmosid.com/)
 
 # Data sets in this tutorial
@@ -160,7 +160,7 @@ Bases Processed:      75500k 	3.75m bases/sec
 ```
 0.22% of our reads contained contaminants or were too short after low quality reads were removed, suggesting that our insert size selection went well.
 
-If we look at the `contam_stats.txt` file we see that most of the contaminants were known Illumina linkers. Because so many of these have been erroneously been deposited in the NT database, Blasting the contaminant sequences will turn up some very odd things. The first sequence in our contaminants file is supposedly a Carp.
+If we look at the `contam_stats.txt` file we see that most of the contaminants were known Illumina linkers. Because so many of these have been erroneously deposited in the NT database, Blasting the contaminant sequences will turn up some very odd things. The first sequence in our contaminants file is supposedly a Carp.
 ```
 #File   data/10142.1.149555.ATGTC.subset_500k.fastq.gz
 #Total  500000
@@ -321,15 +321,15 @@ data/megahit/intermediate_contigs/k99.contigs.fa > data/k99.fastg
 ```
 Time to run: 3 seconds
 
-Download the file to  your local computer by opening a new Terminal window and coping the file
+Download the file to  your local computer by opening a new Terminal window and copying the file
 
 ```bash
-scp user.name@scinet-login.bioteam.net:~/metagenome1/data/k99.fastg .
+scp user.name@login.ecinet.science:~/metagenome1/data/k99.fastg .
 ```
 
 Now open Bandage and select **File > Open Graph** and load ```k99.fastg```
 
-Hit the **Draw Graph** button. Now all the assembled contigs are visible. Some are circular come are linear and some have bubbles in the assembly.
+Hit the **Draw Graph** button. Now all the assembled contigs are visible. Some are circular, some are linear and some have bubbles in the assembly.
 
 ![Main Bandage Screen](/Microbiome-workshop/assets/metagenome/Bandage1.png)
 
@@ -341,12 +341,12 @@ Ref_database.fna : [Download](https://usda-ars-gbru.github.io/Microbiome-worksho
 Select **Build blast database**
 Select **Load from Fasta File** and load ```Ref_database.fna```
 
-Select **Run balst search** then **Close**
+Select **Run Blast Search** then **Close**
 ![Blast options screen](/Microbiome-workshop/assets/metagenome/Bandage2.png)
 
 The contigs will now be taxonomically annotated. Take some time to explore the structure of the contigs. Which ones look correct? What kinds or errors are present in the assembly?
 
-What are the contigs that assembled but were not identified by Blasting to our reference database? The fourth largest node ,Node 987 is actually genomic DNA from the bacteria *Cellulophaga baltica* the host of the 6 of the phages in our metagenome. Our protocol can detect and assemble this host DNA eve though its present at 10-100 times lower abundance than the phages in our sample.
+What are the contigs that assembled but were not identified by Blasting to our reference database? The fourth largest node ,Node 987 is actually genomic DNA from the bacteria *Cellulophaga baltica* the host of the 6 of the phages in our metagenome. Our protocol can detect and assemble this host DNA even though its present at 10-100 times lower abundance than the phages in our sample.
 
 If we go back to the Ceres command line we can continue with the next common step in read based assembly, mapping. Two common types of mapping can occur. You can map reads back to a known reference. This is great if you have closely related organisms of interest and you are trying to understand population variance or quantify known organisms.  A number of programs can be used  for mapping. Bowtie2 is the most common but in this case we will use bbmap.
 
@@ -364,8 +364,7 @@ bbmap.sh \
 ```
 Time to run: 1 minute
 
-When the results are mapped to a reference
-we are able to infer the rate of Error rate for insertions, substitutions and deletions in our genome.  almost all of these errors come from sequencing itself, not assembly. not too how much higher the error rate is for Read 2 than Read 1.
+When the results are mapped to a reference we are able to infer the  Error rate for insertions, substitutions and deletions in our sequences. Almost all of these errors come from sequencing itself, not assembly. Note too, how much higher the error rate is for Read 2 than Read 1.
 
 We can also see the insert size for those reads that did not merge is 300.
 ```

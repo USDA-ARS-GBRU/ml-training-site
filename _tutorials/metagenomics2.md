@@ -37,7 +37,7 @@ module load prodigalorffinder/gcc/64/2.6.3
 The goal of this tutorial is to provide a overview of the Anvi'o workflow for the analysis of assembly-based shotgun metagenomic data. Throughout this tutorial you will primarily learn about the following topics:
 
 * Processing your contigs
-* Profileing your metagenomic samples and merging them,
+* Profiling your metagenomic samples and merging them,
 * Visualizing your data, identifying genome bins interactively, and creating summaries of your results.
 
 ---
@@ -61,6 +61,7 @@ For simplicity, create a directory for this project and copy the data files into
 mkdir metagenome2
 cd metagenome2
 cp /project/microbiome_workshop/metagenome/anvio/data/* .
+ls
 ```
 
 ## Take a look at your FASTA file
@@ -166,7 +167,7 @@ For this tutorial we will be using Anvio's preferred software, [Centrifuge](http
  First export all the gene calls from your database:
 
 ```bash
-anvi-get-dna-sequences-for-gene-calls -c CONTIGS.db -o gene-calls.fa
+anvi-get-dna-sequences-for-gene-calls -c contigs.db -o gene-calls.fa
 ```
 Then run Centrifuge with the following command:
 ```bash
@@ -178,7 +179,7 @@ Then run Centrifuge with the following command:
 Finally import the taxonomic assignments back into Anvi'o
 
 ```bash
-anvi-import-taxonomy -c CONTIGS.db -i centrifuge_report.tsv centrifuge_hits.tsv -p centrifuge
+anvi-import-taxonomy -c contigs.db -i centrifuge_report.tsv centrifuge_hits.tsv -p centrifuge
 
 ```
 You can use any file name you like, however, the order of input files is important: following the parameter -i, you should first declare the report file, and then the hits file.
