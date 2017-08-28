@@ -17,7 +17,7 @@ Time | Event | Speaker/facilitator
 8:30 | Welcome from the Northeast Area Director | Dariusz Swietlik
 8:35 | Welcome from the NAL Director | Paul Wester
 8:40 | Meeting goals and objectives | Brian Scheffler
-8:45 | Group introductions | All
+8:50 | Group introductions | All
 9:15 | Ceres and linux commands | Jonathan Shao
 9:45 | Overview of amplicon sequencing | Adam Rivers
 10:30 | Break
@@ -26,9 +26,11 @@ Time | Event | Speaker/facilitator
 1:00 | Amplicon sequencing tutorial continues | All
 3:00 | Break
 3:20 | Managing large scale amplicon projects | Dan Manter
-3:45 | Scientific area needs discussion | All
-4:30 | Reports from groups | All
-5:15 | End of session |
+3:45 | Scientific needs discussion 1 | All
+4:15 | Reports from groups 1 | All
+3:25 | Scientific needs discussion 2 | All
+4:55 | Reports from groups 2 | All
+5:05 | End of session |
 
 ### Wednesday, August 30, 2017
 
@@ -43,6 +45,7 @@ Time | Event | Speaker/facilitator
 1:00 | Metagenomics reproducibility and error  | Scott Jackson
 1:15 | Panel discussion on benchmarking in metagenomics  | Scott Jackson
 2:00 | Discussion of on microbiome applications in agriculture  | All
+2:45 | Report of microbiome applications in agriculture  | All
 3:00 | Break
 3:15 | Tutorial on differential expression in metatranscriptomes | All
 4:30 | Workshop wrap-up and survey

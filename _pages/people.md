@@ -27,7 +27,6 @@ Wenbin Tuo | Beltsville, MD
 Participant | location
 ------------|---------------
 Chris Dunlap | Peoria, IL
-Derek Bickart | Madison, WI
 Matt Bakker	| Peoria, IL
 Torey Looft	| Ames, IA
 
@@ -46,7 +45,6 @@ Participant | location
 ------------|---------------
 Dan Manter	| Ft. Collins, CO
 Lisa Durso	| Lincoln, NE
-Veronica Acosta-Martnez	|	Lubbock, TX
 Michael Kogut | College Station, TX
 Mike Lehman	 |Brookings, SD
 
