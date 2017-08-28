@@ -21,6 +21,7 @@ Elad Tako | Ithaca, NY
 Michael Wisniewski | Kearneysville, WV
 Charles Li | Beltsville, MD
 Wenbin Tuo | Beltsville, MD
+Robert Li | Beltsville, MD
 
 ### Midwest Area
 
@@ -47,6 +48,8 @@ Dan Manter	| Ft. Collins, CO
 Lisa Durso	| Lincoln, NE
 Michael Kogut | College Station, TX
 Mike Lehman	 |Brookings, SD
+Robert Li | Beltsville, MD
+Arquette Grant | Beltsville, MD
 
 ### Southeast Area
 
@@ -64,7 +67,6 @@ Participant | location
 Timothy Smyser | Fort Collins, CO
 Michael Stulberg | Beltsville, MD
 
-
 ## Bioinformatics Instructors
 
 Person | location
@@ -75,6 +77,7 @@ Adam Rivers	 | Gainesville, FL
 Amanda Hulse | Raleigh, NC		
 Justin Vaughn | Athens, GA
 Jonathan Shao | Beltsville, MD
+Matt Kramer | Beltsville, MD
 
 ## Guests
 
