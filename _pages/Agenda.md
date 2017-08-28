@@ -47,5 +47,5 @@ Time | Event | Speaker/facilitator
 2:00 | Discussion of on microbiome applications in agriculture  | All
 2:45 | Report of microbiome applications in agriculture  | All
 3:00 | Break
-3:15 | Tutorial on differential expression in metatranscriptomes | All
+3:15 | Differential expression in metatranscriptomes | All
 4:30 | Workshop wrap-up and survey
