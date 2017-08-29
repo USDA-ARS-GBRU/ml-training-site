@@ -12,6 +12,10 @@ main:
     url: /people/
   - title: "Registration"
     url: https://ars-microbiome.eventbrite.com
+  - title: "Discussion questions"
+    url: /questions/
+  - title: "Workshop presurvey"
+    url: https://www.surveymonkey.com/results/SM-SWQLWJM5/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"

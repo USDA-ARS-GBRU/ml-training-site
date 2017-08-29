@@ -20,7 +20,7 @@ Anvi'o is a Python package that runs a web server for interactive visualization.
  For the tutorial we will be running Anvi'o on Ceres.
 
 ```bash
-ssh <user.name>@login.scinet.science
+ssh -o TCPkeepAlive=yes -o ServeraliveInterval=20 -o ServerAliveCountMAx=100 <user.name>@login.scinet.science
 ```
 Request a compute node
 ```bash

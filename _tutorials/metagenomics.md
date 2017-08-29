@@ -47,7 +47,7 @@ If you are running this tutorial on the Ceres computer cluster the data are avai
 
 Ceres is the computer cluster for the USDA Agricultural Research Service's SCInet computing environment. From Terminal or Putty (for Windows users) create a secure shell connection to Ceres
 ```bash
-ssh <user.name>@login.scinet.science
+ssh -o TCPkeepAlive=yes -o ServeraliveInterval=20 -o ServerAliveCountMAx=100 <user.name>@login.scinet.science
 ```
 Once you are logged into Ceres you can request access to an interactive node.
 In a real analysis you would create a script that runs all the commands in sequence and submit the script through a program called Sbatch, part of the computer's job scheduling software named Slurm.
