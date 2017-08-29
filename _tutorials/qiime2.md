@@ -521,7 +521,7 @@ qiime gneiss balance-taxonomy \
     --p-taxa-level 2 \
     --p-balance-name 'y0' \
     --m-metadata-file /project/microbiome_workshop/amplicon/data/mapping3.txt  \
-    --m-metadata-category Subject \
+    --m-metadata-category Genotype \
     --o-visualization y0_taxa_summary.qzv
 ```
 
