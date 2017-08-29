@@ -333,7 +333,7 @@ First create a list of all sequence variant ids that are not mitochondria or chl
 qiime tools export --output-dir taxonomy-export taxonomy.qza
 
 # search for matching lines with grep then select the id column
-grep -v -i "mitochondia|chloroplast" taxonomy-export/taxonomy.tsv | cut  -f 1 > no-chloro-mito-ids.txt
+grep -v -i "mitochondia|chloroplast|Feature" taxonomy-export/taxonomy.tsv | cut  -f 1 > no-chloro-mito-ids.txt
 ```
 
 Convert our Qiime data artifact to the underlying [biom](http://biom-format.org/) file
