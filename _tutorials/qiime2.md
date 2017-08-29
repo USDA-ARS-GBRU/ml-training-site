@@ -209,7 +209,7 @@ We have just called sequence variants two different ways. In a real workflow you
 time qiime feature-table summarize \
   --i-table table-dada2.qza \
   --o-visualization table-dada2.qzv \
-  --m-sample-metadata-file /project/microbiome_workshop/amplcon/data/mapping.txt
+  --m-sample-metadata-file /project/microbiome_workshop/amplicon/data/mapping.txt
   ```
   Time to run: 30 seconds
 
