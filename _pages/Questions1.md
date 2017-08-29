@@ -5,7 +5,9 @@ permalink: "/questions/"
 layout: single
 author: "Adam Rivers"
 ---
+
 # Session 1
+
 One goal of this workshop is to build a community of ARS researchers doing
 microbiome work. We have a series of discussions sessions that are designed
 to give you time to discuss your work and things that could be done and foster
