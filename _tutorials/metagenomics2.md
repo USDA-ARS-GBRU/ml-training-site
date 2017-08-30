@@ -17,6 +17,12 @@ written by A. Murat Eren (Meren) and modified and reposted with permission by Ad
 # Using Anvi'o
 
 Anvi'o is a Python package that runs a web server for interactive visualization.
+
+The anvio workflow covers many steps:
+
+![Anvioworkflow](/Microbiome-workshop/assets/metagenome/fig-1-2x.jpg)
+Figure from [Eren et al. 2015](https://peerj.com/articles/1319/)
+
  For the tutorial we will be running Anvi'o on Ceres.
 
 ```bash
