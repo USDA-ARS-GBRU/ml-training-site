@@ -219,7 +219,7 @@ Then, you can run `anvi-init-bam` on all of them by typing this:
 ```bash
 for sample in ./*RAW.bam
   do
-    bname=`basename "$file" -RAW.bam`
+    bname=`basename "$sample" -RAW.bam`
     anvi-init-bam "$sample" -o "$bname".bam
   done
 ```
