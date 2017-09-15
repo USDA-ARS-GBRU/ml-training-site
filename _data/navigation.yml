@@ -10,10 +10,10 @@ main:
     url: /tutorials/
   - title: "People"
     url: /people/
-  - title: "Registration"
-    url: https://ars-microbiome.eventbrite.com
   - title: "Discussion questions"
     url: /questions/
+  - title: "Presentations"
+    url: /presentations/
   - title: "Workshop presurvey"
     url: https://www.surveymonkey.com/results/SM-SWQLWJM5/
   # - title: "About"

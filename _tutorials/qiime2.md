@@ -61,9 +61,9 @@ In a real analysis you would create a script that runs all the commands in seque
 To request access to an interactive node:
 ```bash
 # Request access to one node of the cluster
-# Note that "microbiome" is a special queue for the workshop,
+# using the queue "short"
 # to see available queues use the command "sinfo"
-salloc -p microbiome -N 1 -n 40 -t 06:00:00
+salloc -p short -N 1 -n 40 -t 06:00:00
 
 # Set up Xvfb graphics software so that QIIME2 can generate figures.
 # Xvfb creates a virtual X session. This needs to be run in the background.
