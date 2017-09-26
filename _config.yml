@@ -5,6 +5,8 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve`. If you change this file, please restart the server process.
 
+minimal_mistakes_skin    : "default" # "air", "contrast", "dark", "dirt", "mint", "sunrise"
+
 # Site Settings
 locale                   : "en-US"
 title                    : "USDA ARS Microbiome Workshop 2017"
@@ -92,15 +94,16 @@ author:
   facebook         :
   foursquare       :
   github           :
+  gitlab           :
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         :
+  linkedin         : # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
-  steam            :
+  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
+  steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
   twitter          :
   vine             :
@@ -176,11 +179,15 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
+<<<<<<< HEAD
 timezone: America/New_York # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+=======
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+>>>>>>> cf604ec33b221d3ff29c2b173e8bb7658524aefd
 
 
-# Plugins
-gems:
+# Plugins (previously gems:)
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -252,6 +259,7 @@ defaults:
       comments: # true
       share: true
       related: true
+<<<<<<< HEAD
       # _tutorials
   - scope:
       path: ""
@@ -260,3 +268,5 @@ defaults:
       layout: single
       author_profile: false
       share: false
+=======
+>>>>>>> cf604ec33b221d3ff29c2b173e8bb7658524aefd
