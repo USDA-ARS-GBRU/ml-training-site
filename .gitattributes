@@ -1,2 +1,6 @@
-*.qza filter=lfs diff=lfs merge=lfs -text
-*.qzv filter=lfs diff=lfs merge=lfs -text
+assets/fonts/* linguist-vendored
+assets/js/main.min.js linguist-vendored
+assets/js/lunr/* linguist-vendored
+assets/js/plugins/* linguist-vendored
+assets/js/vendor/* linguist-vendored
+_sass/minimal-mistakes/vendor/* linguist-vendored
