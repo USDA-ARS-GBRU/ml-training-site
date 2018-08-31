@@ -121,6 +121,9 @@ Time to run: 30 seconds
 Raw sequencing data needs to be processed to remove artifacts. The first step in
 this process is to remove contaminant sequences that are present in the sequencing process such as PhiX which is sometimes added as an internal control for sequencing runs.
 
+Running this tutorial by yourself? You can download the data file [here](https://usda-ars-gbru.github.io/Microbiome-workshop/assets/metagenome/10142.1.149555.ATGTC.subset_500k.fastq.gz).
+{: .notice--info}
+
 ```bash
 # Filter out contaminant reads placing them in their own file
 time bbduk.sh in=data/10142.1.149555.ATGTC.subset_500k.fastq.gz \
