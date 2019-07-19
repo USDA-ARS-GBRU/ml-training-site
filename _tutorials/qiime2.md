@@ -1,6 +1,6 @@
 ---
-title: "Amplicon analysis with QIIME2"
-excerpt: "An example workflow using QIIME2 version 2017.7"
+title: "Example Lesson"
+excerpt: "An example lesson on Qiime2"
 layout: single
 author: "Adam Rivers"
 

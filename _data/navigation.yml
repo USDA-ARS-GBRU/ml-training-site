@@ -14,8 +14,8 @@ main:
     url: /questions/
   - title: "Presentations"
     url: /presentations/
-  - title: "Workshop presurvey"
-    url: https://www.surveymonkey.com/results/SM-SWQLWJM5/
+  #- title: "Workshop presurvey"
+  #  url: https://www.surveymonkey.com/results/SM-SWQLWJM5/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"

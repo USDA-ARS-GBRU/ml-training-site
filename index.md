@@ -2,28 +2,37 @@
 layout: splash
 permalink: /
 header:
-  overlay_color: "444444"
-  overlay_image: /assets/images/pattern.svg
-excerpt: 'A two day workshop to bring ARS scientists together for training and community building around microbiome research.'
+  overlay_color: "#444444"
+  overlay_image: /assets/images/laura-ockel-1194484-unsplash.png
+excerpt: 'A two day workshop on applying machine learning'
+
 feature_row:
   - image_path: /assets/images/amplicons.jpg
-    alt: "amplicon"
-    title: "Amplicon Sequencing"
-    excerpt: "Sequencing amplified 16S rRNA, 16S rRNA or the fungal ITS"
-    url: "/tutorials/qiime2/"
+    alt: "Applications"
+    title: "Applications"
+    excerpt: "Biology, Geospatial and social problems"
+    url: "/tutorials/"
     btn_label: "Learn More"
     caption: "Photo credit: [ Rocky Mountain Laboratories, NIAID, NIH](https://commons.wikimedia.org/wiki/File:SalmonellaNIAID.jpg)"
+
   - image_path: /assets/images/metagenomics.jpg
     alt: "fully responsive"
-    title: "Metagenomics"
+    title: "Questions Answered"
     excerpt: "Sequencing environmental DNA from mixed communities"
     url: "/tutorials/metagenomics/"
     caption: "Photo credit: [Kostas Tsobanoglou](https://commons.wikimedia.org/wiki/File:Diatoms-HCMR.jpg)"
     btn_label: "Learn More"
   - image_path: /assets/images/metatranscriptomics.jpg
-    alt: "Metatranscriptomics"
-    title: "Metatranscriptomics"
-    excerpt: "Sequencing of environmental mRNA from mixed communities"
+    alt: "Prerequisites"
+    title: "Prerequisites"
+    excerpt: "familiarity with Algebra and Python or another scripting language like R are assumed"
+    url: "/tutorials/metatranscriptomics/"
+    btn_label: "Learn More"
+    caption: "Photo credit: [Kristian Peters](https://commons.wikimedia.org/wiki/File:Plagiomnium_affine_laminazellen.jpeg)"
+  - image_path: /assets/images/metatranscriptomics.jpg
+    alt: "Prerequisites"
+    title: "Prerequisites"
+    excerpt: "familiarity with Algebra and Python or another scripting language like R are assumed"
     url: "/tutorials/metatranscriptomics/"
     btn_label: "Learn More"
     caption: "Photo credit: [Kristian Peters](https://commons.wikimedia.org/wiki/File:Plagiomnium_affine_laminazellen.jpeg)"
@@ -32,5 +41,7 @@ feature_row:
 
 
 {% include feature_row id="intro" type="center" %}
+
+Testing
 
 {% include feature_row %}
