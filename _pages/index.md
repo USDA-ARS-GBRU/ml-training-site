@@ -18,14 +18,14 @@ feature_row:
     alt: "Lessons"
     title: "Lessons"
     excerpt: "Lessons on applying machine learning"
-    url: "/lessons/"
+    url: "/learn/"
     btn_label: "Learn More"
     caption: ""
   - image_path: /assets/images/sarah-shaffer-O3gOgPB4sRU-unsplash.jpg
     alt: "Exercises"
     title: "Exercises"
-    excerpt: "The notebooks you will be doing your work in."
-    url: "/exercises/"
+    excerpt: "The notebooks you will be doing your work in"
+    url: "/learn/"
     caption: ""
     btn_label: "Learn More"
 

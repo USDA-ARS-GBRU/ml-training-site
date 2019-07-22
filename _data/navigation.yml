@@ -1,13 +1,11 @@
 # main links
 main:
-  - title: "About"
-    url: /about/
+  - title: "Before you come"
+    url: /setup/
   - title: "Agenda"
     url: /agenda/
-  - title: "Lessons"
-    url: /lessons/
-  - title: "Exercises"
-    url: /exercises/
+  - title: "Learn"
+    url: /learn/
   - title: "Travel information"
     url: /travel/
   - title: "People"
