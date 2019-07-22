@@ -4,9 +4,9 @@ main:
     url: /about/
   - title: "Agenda"
     url: /agenda/
-  - title: "lessons"
+  - title: "Lessons"
     url: /lessons/
-  - title: "exercises"
+  - title: "Exercises"
     url: /exercises/
   - title: "Travel information"
     url: /travel/

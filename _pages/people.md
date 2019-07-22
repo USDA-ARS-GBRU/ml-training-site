@@ -4,8 +4,8 @@ excerpt: "The participants and organizers for workshop."
 permalink: /people/
 layout: single
 header:
-  image: /assets/images/brandon-mowinkel-213912.jpg
-  caption: "Photo credit: [*Brandon Mowinkel*](https://unsplash.com/photos/4rIfZgeJ4SI)"
+  image: /assets/images/microbiome_ws.jpg
+  caption: "[*ARS Microbiome training 2017*](https://usda-ars-gbru.github.io/Microbiome-workshop/)"
 ---
 
 ## Participants

@@ -34,7 +34,7 @@ feature_row:
 
 {% include feature_row id="intro" type="center" %}
 
-This workshop is designed to introduce life scientists with some programming experience to machine learning methods.  By the end of the course you should be able to: 1) Identify the types pf problems that machine learning methods can be applied to, 2) Have an understanding of basic concepts like the bias-variance tradeoff, and test/train/validate, 3) Have experience applying a few types of classification and regression methods, 4) Have a general sense of the methods and software  available, and 5) Know where to go to continue learning about ML after you leave.
+This workshop is designed to introduce life scientists with some programming experience to machine learning methods.  By the end of the course you should be able to: 1) identify the types of problems that machine learning methods can be applied to, 2) have an understanding of basic concepts like the bias-variance tradeoff, and test/train/validate, 3) have experience applying a few types of classification and regression methods, 4) have a general sense of the methods and software available, and 5) know where to go to continue learning about ML after you leave.
 
 {% include feature_row %}
 
