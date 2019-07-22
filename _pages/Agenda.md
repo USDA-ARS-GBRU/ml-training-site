@@ -13,11 +13,27 @@ header:
 
 Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
-8:00 | Coffee
+8:00 | Coffee |
+|Python for ML warm up|
+|Framing|
+|Descending into ML|
+|Reducing loss/ optimization as  learning|
+|Generalization|
+|Training and test Sets|
+|Synthesis example|
 
 
 ### Wednesday, August 28, 2019
 
 Time | Event | Speaker/facilitator
 ---- | ----- | -------------------
-8:00 | Coffee
+8:00 | Coffee|
+|Feature representation |
+|Regularization|
+|Logistic regression|
+|Classification metrics|
+|Tree based methods |
+|Neural network methods|
+|The landscape of ML methods|
+|The landscape of software tools available|
+|Resources for learning more about ML once you go home|

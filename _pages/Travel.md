@@ -4,8 +4,8 @@ excerpt: "Travel logistics for the ML training."
 permalink: /travel/
 layout: single
 header:
-  image: /assets/images/andrey-larin-42960.jpg
-  caption: "Photo credit: [*Andrey Larin*](https://unsplash.com/@engine9?photo=38KVyPi1gTI)"
+  image: /assets/images/downtown_gainesville.jpg
+  caption: "*Courtesy Visit Gainesville Alachua County*"
 ---
 
 *Approval for the training is still officially pending for ARS participants. We will provide official information once the meeting is approved.*
@@ -28,12 +28,14 @@ Please book your room at the Reitz Union Hotel using the group name provided in 
 > 655 Reitz Union Drive <br>
 > Gainesville, FL 32611
 
-<iframe
-  width="600"
-  height="400"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBoAa1HGN1leqOY3QrqQ9QZ08NdA79Xr7E&q=Reitz+Union+Hotel" allowfullscreen>
-</iframe>
+<div>
+     <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=29.646225621027774~-82.34824862170038&lvl=15&typ=d&sty=h&src=SHELL&FORM=MBEDV8&pushpins=29.646225621027774_-82.34824862170038&" scrolling="no">
+     </iframe>
+     <div style="white-space: nowrap; text-align: center; width: 500px; padding: 6px 0;">
+        <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=29.646225621027774~-82.34824862170038&amp;sty=h&amp;lvl=15&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+        <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=29.646225621027774~-82.34824862170038&amp;sty=h&amp;lvl=15&amp;rtp=~pos.29.646225621027774_-82.34824862170038____&amp;FORM=MBEDLD">Get Directions</a>
+    </div>
+</div>
 
 ## Flights
 

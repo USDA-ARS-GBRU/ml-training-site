@@ -2,25 +2,13 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Travel information"
-    url: /travel/
   - title: "Agenda"
     url: /agenda/
-  - title: "Tutorials"
-    url: /tutorials/
+  - title: "lessons"
+    url: /lessons/
+  - title: "exercises"
+    url: /exercises/
+  - title: "Travel information"
+    url: /travel/
   - title: "People"
     url: /people/
-  - title: "Discussion questions"
-    url: /questions/
-  - title: "Presentations"
-    url: /presentations/
-  #- title: "Workshop presurvey"
-  #  url: https://www.surveymonkey.com/results/SM-SWQLWJM5/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
