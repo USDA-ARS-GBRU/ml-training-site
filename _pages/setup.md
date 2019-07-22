@@ -8,6 +8,10 @@ header:
   caption: "Photo credit: [*D3.js*](https://observablehq.com/@mbostock/hover-voronoi)"
 ---
 
+ARS employees without administrator privileges should contact their IT support
+staff to install all software before leaving.
+{: .notice--warning}
+
 # The tools used in the course
 
 To get everyone up an running quickly with machine learning we rely on

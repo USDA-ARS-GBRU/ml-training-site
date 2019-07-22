@@ -10,24 +10,27 @@ feature_row:
   - image_path: /assets/images/christopher-gower-m_HRfLhgABo-unsplash.jpg
     alt: "Before you come"
     title: "Before you come"
-    excerpt: "Getting your computer set up for the class"
+    excerpt: "Getting your computer set up for the class before arriving"
     url: "/setup/"
-    btn_label: "Learn More"
+    btn_label: "Set me up!"
+    btn_class: "btn--info"
     caption: ""
   - image_path: /assets/images/kelli-tungay-2LJ4rqK2qfU-unsplash.jpg
-    alt: "Lessons"
-    title: "Lessons"
-    excerpt: "Lessons on applying machine learning"
+    alt: "Learn"
+    title: "Learn"
+    excerpt: "Lessons and exercises on applying machine learning"
     url: "/learn/"
-    btn_label: "Learn More"
+    btn_label: "View material"
+    btn_class: "btn--info"
     caption: ""
-  - image_path: /assets/images/sarah-shaffer-O3gOgPB4sRU-unsplash.jpg
-    alt: "Exercises"
-    title: "Exercises"
-    excerpt: "The notebooks you will be doing your work in"
-    url: "/learn/"
+  - image_path: /assets/images/tickets.jpg
+    alt: "Register"
+    title: "Register"
+    excerpt: "ARS participants have been invited. UF and community attendees can register here."
+    url: "/register/"
     caption: ""
-    btn_label: "Learn More"
+    btn_label: "Register"
+    btn_class: "btn--info"
 
 ---
 
