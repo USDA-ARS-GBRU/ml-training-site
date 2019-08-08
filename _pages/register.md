@@ -4,7 +4,7 @@ excerpt: "Registration"
 permalink: /register/
 layout: single
 header:
-  image: /assets/images/tickets-long.jpg
+  image: /assets/images/tickets_long.jpg
   caption: "Photo credit: [*Claudio Schwartz*](https://unsplash.com/photos/UX-mCYFC1cAQ)"
 ---
 
@@ -16,11 +16,11 @@ kerrie.geil@usda.gov.
 {: .notice--warning}
 
 ### USDA/UF Machine Learning Training 2019
-> Reitz Union
-> University of Florida
-> 655 Reitz Union Drive
+> J. Wayne Reitz Union, Room 2365  
+> University of Florida  
+> 655 Reitz Union Drive  
 > Gainesville, FL 32611  
 
 August 27-28, 2019
 
-General registration information will be available shortly.
+[Register now](https://uf-usda-ml-course.eventbrite.com){: .btn .btn--info .btn--x-large}
