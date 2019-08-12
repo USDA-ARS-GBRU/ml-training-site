@@ -10,7 +10,7 @@ header:
 
 The information on this page is for USDA-ARS participants who have received
 invitations to participate by email. Other people interested in taking the
-course should visit the [general registration page](/register/).
+course should visit the [general registration page]({% link _pages/register.md %}).
 {: .notice--warning}
 
 *Approval for the training is still officially pending for ARS participants. We will provide official information once the meeting is approved.*
