@@ -12,3 +12,7 @@ example/_site
 Gemfile.lock
 node_modules
 npm-debug.log*
+
+# Notebook checkpoint files.
+.ipynb_checkpoints/
+
