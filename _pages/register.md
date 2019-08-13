@@ -10,7 +10,7 @@ header:
 
 This page is for UF or Community participants interested in taking the
 course. ARS participants with travel paid by SCINet have already been contacted
-and travel information for them is [here](/travel). IF you are an ARS
+and travel information for them is [here](/ml-training-site/travel). IF you are an ARS
 employee interested in participating with your own funds please contact
 kerrie.geil@usda.gov.
 {: .notice--warning}
