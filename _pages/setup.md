@@ -127,7 +127,7 @@ latest version of Miniconda. Download for Python 3.7. Download either the
 architecture. If you don’t know which architecture you’re using type `arch`
 into the terminal. Download the `Linux 64-bit (bash installer)` or the `Linux 64-bit (bash installer)`.
 
-![Anaconda download page](/ml-training-site/assets/images/ubuntu1.png)
+![Anaconda download page](/ml-training-site/assets/images/mac1.png)
 
 ## Install locally
 
