@@ -1,5 +1,5 @@
 ---
-layout: archive
+layout: single
 title: "Lessons and Exercises"
 permalink: /learn/
 author_profile: false
