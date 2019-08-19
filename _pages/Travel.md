@@ -13,7 +13,7 @@ invitations to participate by email. Other people interested in taking the
 course should visit the [general registration page](/ml-training-site/register).
 {: .notice--warning}
 
-*Approval for the training is still officially pending for ARS participants. We will provide official information once the meeting is approved.*
+*The meeting has been approved*
 
 ## Dates
 The workshop will be from August 27-28 with travel days of the 26 and 29 if you need them.  We anticipate finishing by 17:00 on the 28th so departure that night should be possible for some of you. The workshop will be at the Reitz Union at the University of Florida.
