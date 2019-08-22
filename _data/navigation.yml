@@ -4,8 +4,6 @@ main:
     url: /setup/
   - title: "Agenda"
     url: /agenda/
-  - title: "Learn"
-    url: /learn/
   - title: "Travel information"
     url: /travel/
   - title: "People"

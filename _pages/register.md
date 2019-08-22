@@ -16,10 +16,11 @@ kerrie.geil@usda.gov.
 {: .notice--warning}
 
 ### USDA/UF Machine Learning Training 2019
-> J. Wayne Reitz Union, Room 2365  
-> University of Florida  
-> 655 Reitz Union Drive  
-> Gainesville, FL 32611  
+> J. Wayne Reitz Union <br>
+> Room 2335 Tuesday (Room 2365 Wednesday) <br>
+> University of Florida <br>
+> 655 Reitz Union Drive  <br>
+> Gainesville, FL 32611  <br>
 
 August 27-28, 2019
 

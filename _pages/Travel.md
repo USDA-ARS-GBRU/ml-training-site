@@ -29,7 +29,8 @@ You will receive an email from Adam Rivers with the subject "ML training travel 
 
 Please book your room at the Reitz Union Hotel using the group name provided in the email.
 
-> [Reitz Union Hotel](https://www.union.ufl.edu/UnionHotel)  
+> [Reitz Union Hotel](https://www.union.ufl.edu/UnionHotel)<br>
+> (352) 392-2151  <br>
 > 655 Reitz Union Drive <br>
 > Gainesville, FL 32611
 
