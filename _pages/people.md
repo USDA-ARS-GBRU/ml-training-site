@@ -80,7 +80,7 @@ MJ Lee | University of Florida, Occupational Therapy | Gainesville, FL
 Volker Mai | University of Florida, Epidemiology | Gainesville, FL
 carla mavian | University of Florida, Pathology | Gainesville, FL
 Nancy Montes | University of Florida, Florida Sea Grant College Program | Gainesville, FL
-Taylor Paisie | University of Florida, Patholog | Gainesville, FL
+Taylor Paisie | University of Florida, Pathology | Gainesville, FL
 Suresh Pannerselvam | University of Florida, Entomology and Nematology | Gainesville, FL
 Dev Paudel | University of Florida, Agronomy | Gainesville, FL
 Shengchen Shan | University of Florida, Florida Museum of Natural History | Gainesville, FL
