@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "About"
+    url: /about/
   - title: "Before you come"
     url: /setup/
   - title: "Agenda"
