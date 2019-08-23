@@ -13,11 +13,11 @@ header:
 
 Name | Organization | Location
 -- | -- | --
+[Adam Rivers](https://tinyecology.com) | USDA Agricultural Research Service, Genomics and Bioinformatics Research   Unit | Gainesville,  FL
 Dimitri Bourilkov | University of Florida, Physics | Gainesville,  FL
 Brian Stucky | University of Florida, Florida Museum of Natural History | Gainesville,  FL
 Gaurav Vaidya | University of Florida, Florida Museum of Natural History | Gainesville,  FL
 Ravin Poudel | University of Florida / USDA Agricultural Research Service, Microbiology   and Cell Science | Gainesville,  FL
-Adam Rivers | USDA Agricultural Research Service, Genomics and Bioinformatics Research   Unit | Gainesville,  FL
 Geraldine Klarenberg | University of Florida, Agricultural and Biological Engineering | Gainesville,  FL
 
 ## Co-organizers

@@ -116,12 +116,13 @@ On Tuesday morning we will set up our conda environment as a class
 
 ## Set up your conda environment
 
-A few days before the course we will post a conda `environment.xml` file here. That file will specify all the conda packages that need to be installed in an isolated
+Download the this conda environment file [mlenv.yaml](/ml-training-site/assets/mlenv.yaml).
+ The file specifies all the conda packages that need to be installed in an isolated
 conda environment names `mlenv`. download that environment then run this conda command in the directory with the file:
 
 
 ```
-conda env create --f environment.xml
+conda env create -f mlenv.yaml
 ```
 
 
