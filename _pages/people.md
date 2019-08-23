@@ -97,6 +97,5 @@ Jian Zou | University of Florida, Civil and Coastal Engineering | Gainesville, F
 
 Name | Organization | Location
 -- | -- | --
-
 Gaurav Singh |   |  
 Liz Theurer |  Voltus, Inc. |  
