@@ -50,7 +50,7 @@ Seongyun Kim | USDA Agricultural Research Service | Beltsville, MD
 Danielle Lemay | USDA Agricultural Research Service | Davis, CA
 Brian Mack | USDA Agricultural Research Service | New Orleans,  LA
 Jerry H. Martin | USDA Agricultural Research Service | Florence,  SC
-Bille Morgan | USDA Agricultural Research Service | Beltsville, MD
+Billie Morgan | USDA Agricultural Research Service | Beltsville, MD
 Susan O'Shaughnessy | USDA Agricultural Research Service | Bushland,  TX
 Nathan Palmer | USDA Agricultural Research Service | Lincoln, NE
 Steven Schroeder | USDA Agricultural Research Service | Beltsville,  MD
@@ -67,18 +67,19 @@ Mike White | USDA Agricultural Research Service | Temple, TX
 
 Name | Organization | Location
 -- | -- | --
+Bikash Acharya | University of Florida,  Program for Resource Efficient Buildings | Gainesville, FL 
 Ibukun Akinyemi | University of Florida, Pediatrics | Gainesville, FL
 Michael Belitz | University of Florida, Biology | Gainesville, FL
 Gail Castaneda | University of Florida, Occupational Therapy | Gainesville, FL
 Nathan Catlin | University of Florida, Biology | Gainesville, FL
 Cleber de Souza | University of Florida, Agronomy | Gainesville, FL
-Luis Felipe Ferr√£o | University of Florida, Horticulture | Gainesville, FL
+Luis Felipe Ferrão | University of Florida, Horticulture | Gainesville, FL
 Carl Henriksen | University of Florida, Pharmaceutical Outcomes and Policies | Gainesville, FL
 Oleksandr Kondratov | University of Florida, Pediatrics | Gainesville, FL
 Liudmyla Kondratova | University of Florida, Pediatrics | Gainesville, FL
 MJ Lee | University of Florida, Occupational Therapy | Gainesville, FL
 Volker Mai | University of Florida, Epidemiology | Gainesville, FL
-carla mavian | University of Florida, Pathology | Gainesville, FL
+Carla Mavian | University of Florida, Pathology | Gainesville, FL
 Nancy Montes | University of Florida, Florida Sea Grant College Program | Gainesville, FL
 Taylor Paisie | University of Florida, Pathology | Gainesville, FL
 Suresh Pannerselvam | University of Florida, Entomology and Nematology | Gainesville, FL
@@ -96,6 +97,6 @@ Jian Zou | University of Florida, Civil and Coastal Engineering | Gainesville, F
 
 Name | Organization | Location
 -- | -- | --
-Bikash Acharya |   |  
+
 Gaurav Singh |   |  
-Liz Theurer |   |  
+Liz Theurer |  Voltus, Inc. |  
