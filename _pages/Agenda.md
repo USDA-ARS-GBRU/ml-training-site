@@ -39,7 +39,7 @@ Time | Event | Speaker/facilitator | Lessons
 8:45 |Regularization| Brian Stucky | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/09_Regularization.ipynb)
 9:30 | Break / Question time | |
 9:45 |Classification metrics| Geraldine Klarenberg | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/11_classification_metrics.ipynb)
-10:30|Tree based methods | Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/12_Tree_based_methods.ipynb)
+10:30|Tree based methods | Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/12_Tree_based_methods.ipynb), [Presentation](/ml-training-site/assets/nb-lessons/db190827.pdf)
 11:15 | Break / Question time   
 11:30|Neural network methods| Gaurav Vaidya | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/13_neural_network_methods.ipynb)
 12:15 | Lunch | |
