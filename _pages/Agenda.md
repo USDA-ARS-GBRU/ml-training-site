@@ -42,8 +42,8 @@ Time | Event | Speaker/facilitator | Lessons
 10:30|Tree based methods | Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/12_Tree_based_methods.ipynb)
 11:15 | Break / Question time   
 11:30|Neural network methods| Gaurav Vaidya | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/13_neural_network_methods.ipynb)
-12:15 | Lunch
-1:30 | Synthesis example 2 | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/07_synthesis_example2.ipynb
+12:15 | Lunch | |
+1:30 | Synthesis example 2 || [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/07_synthesis_example2.ipynb)
 2:00 |The landscape of ML methods| Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/14_the_landscape_of_ML_methods.ipynb)
 2:30 | Break /Question time
 3:00|The landscape of software tools available| Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/15_the_landscape_of_ml_software.ipynb)
