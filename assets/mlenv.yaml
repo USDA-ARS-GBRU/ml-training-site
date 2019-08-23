@@ -1,8 +1,6 @@
 name: mlenv
 channels:
   - anaconda
-  - http://conda.anaconda.org/gurobi
-  - qiime2/label/r2018.6
   - bioconda
   - conda-forge
   - defaults
@@ -131,4 +129,3 @@ dependencies:
   - zipp=0.5.2
   - zlib=1.2.11
 prefix: /Users/rivers/anaconda3/envs/mlenv
-
