@@ -21,15 +21,14 @@ The workshop will be from August 27-28 with travel days of the 26 and 29 if you 
 ## Travel vouchers
 Travel charges are being monitored by USDA and we have to report total expenses, so we would ask that you be prudent on your charges and extremely timely on turning in your travel vouchers.
 
-Please have a copy of the travel authorization and voucher sent to Wendy Smith (<wendy.smith@ars.usda.gov>) with the subject line as “ML-training and your name”.
-
 You will receive an email from Adam Rivers with the subject "ML training travel information" that contains the accounting code for your travel. Your travel arranger will need to put in a portal request to add this code to your profile for this trip.
 
 ## Hotel
 
 Please book your room at the Reitz Union Hotel using the group name provided in the email.
 
-> [Reitz Union Hotel](https://www.union.ufl.edu/UnionHotel)  
+> [Reitz Union Hotel](https://www.union.ufl.edu/UnionHotel)<br>
+> (352) 392-2151  <br>
 > 655 Reitz Union Drive <br>
 > Gainesville, FL 32611
 

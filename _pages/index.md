@@ -19,7 +19,7 @@ feature_row:
     alt: "Learn"
     title: "Learn"
     excerpt: "Lessons and exercises on applying machine learning"
-    url: "/learn/"
+    url: "/agenda/"
     btn_label: "View material"
     btn_class: "btn--info"
     caption: ""

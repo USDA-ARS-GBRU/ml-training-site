@@ -15,8 +15,6 @@ privileges on your computer.  We achieve this by using a package manager called
 [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Miniconda creates isolated environments where software packages and package dependencies can be installed from a small file listing the required packages.
 {: .notice--info}
 
-# Before you arrive
-Please set up miniconda for your operating system
 
 ## Windows 10 instructions
 (modified from Nicholas Dawson's [instructions](https://atmoguy.com/python-for-scientists-install-windows/))
@@ -57,6 +55,52 @@ Your Miniconda shell should now be available under the start menu
 ![Anaconda install page 5](/ml-training-site//assets/images/Screenshot_5.png)
 
 
+### Conda install
+
+On Tuesday morning we will set up our conda environment as a class.
+
+Download the this conda environment file [windows64-mlenv.txt](/ml-training-site/assets/windows64-mlenv.txt).
+The file specifies all the conda packages that need to be installed in an isolated
+conda environment named `mlenv`.
+
+From the Windows start menu select `/Anaconda Powershell Prompt (miniconda3)`
+
+Move into the directory with the file and run:
+
+```
+conda env create -f windows64-mlenv.yaml
+```
+
+For more information refer to the [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+Once your conda environment has been created activate the environment:
+
+```
+conda activate mlenv
+```
+
+###  Download the course materials
+
+**On the first day of the course** [download the course materials](https://github.com/USDA-ARS-GBRU/ml-training-site/archive/master.zip) so you can interactively code during the course.
+
+Unzip the file then *move into the top level of the directory* in your Anaconda
+Powershell with the environment `mlenv` active.
+
+
+###  Start your Jupyter notebooks
+
+Start up your Jupyter notebook with this command:
+
+```
+jupyter notebook
+```
+
+This should open in your browser
+
+![Jupyter home screen](/ml-training-site/assets/images/jupyter-home.png)
+
+
+From the web page select `assets > nb-lessons > 01_Python_for_ML_warm_up.ipynb`
 
 
 ## MacOS 10.14 instructions
@@ -82,8 +126,50 @@ You can now open up your mac's Terminal program under `Applications -> Utilities
 ![Terminal](/ml-training-site//assets/images/mac3.png)
 
 
+On Tuesday morning we will set up our conda environment as a class
+
+### Set up your conda environment
+
+Download the this conda environment file [mlenv.yaml](/ml-training-site/assets/mlenv.yaml).
+ The file specifies all the conda packages that need to be installed in an isolated
+conda environment names `mlenv`. Open the Terminal.app and run this conda
+command in the directory with the file:
+
+```
+conda env create -f mlenv.yaml
+```
+
+For more information refer to the [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+Once your conda environment has been created activate the environment using
+
+```
+conda activate mlenv
+```
+
+###  Download the course materials
+
+**On the first day of the course** [download the course materials](https://github.com/USDA-ARS-GBRU/ml-training-site/archive/master.zip) so you can interactively code during the course.
+
+Unzip the file then move into the directory.
+
+###  Start your Jupyter notebook
+
+Start up your Jupyter notebook with this command:
+
+```
+jupyter notebook
+```
+
+This should open in your browser
+
+![Jupyter home screen](/ml-training-site/assets/images/jupyter-home.png)
 
 
+From the web page select `assets > nb-lessons > 01_Python_for_ML_warm_up.ipynb`
+
+This will bring up our first notebook lesson. Go to the menu
+ `Kernel > Change kernel` and select the kernel for our conda environment `mlenv`.
 
 
 ## Linux instructions
@@ -91,7 +177,7 @@ You can now open up your mac's Terminal program under `Applications -> Utilities
 ### Download
 Go [here](https://docs.conda.io/en/latest/miniconda.html) to download the
 latest version of Miniconda. Download for Python 3.7. Download either the
-32-bit or 64-bit Windows version that corresponds to your computer's
+32-bit or 64-bit Linux version that corresponds to your computer's
 architecture. If you don’t know which architecture you’re using type `arch`
 into the terminal. Download the `Linux 64-bit (bash installer)` or the `Linux 64-bit (bash installer)`.
 
@@ -110,20 +196,18 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 Close and reopen your Terminal.  If you see `(base)`at the beginning of your Terminal prompt then conda was installed successfully.
 
-# At the beginning of class (all operating systems)
+### Set up your conda environment
 
-On Tuesday morning we will set up our conda environment as a class
+On Tuesday morning we will set up our conda environment as a class.
 
-## Set up your conda environment
-
-A few days before the course we will post a conda `environment.xml` file here. That file will specify all the conda packages that need to be installed in an isolated
-conda environment names `mlenv`. download that environment then run this conda command in the directory with the file:
-
+Download the this conda environment file [mlenv.yaml](/ml-training-site/assets/mlenv.yaml).
+ The file specifies all the conda packages that need to be installed in an isolated
+conda environment names `mlenv`. Open the Terminal and run this conda command
+in the directory with the file:
 
 ```
-conda env create --f environment.xml
+conda env create -f mlenv.yaml
 ```
-
 
 For more information refer to the [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
@@ -133,14 +217,14 @@ Once your conda environment has been created activate the environment using
 conda activate mlenv
 ```
 
-##  Download the course materials
+###  Download the course materials
 
 **On the first day of the course** [download the course materials](https://github.com/USDA-ARS-GBRU/ml-training-site/archive/master.zip) so you can interactively code during the course.
 
 Unzip the file then move into the directory.
 
 
-##  Start your Jupyter notebooks
+###  Start your Jupyter notebook
 
 Start up your Jupyter notebook with this command:
 
@@ -155,8 +239,8 @@ This should open in your browser
 
 From the web page select `assets > nb-lessons > 01_Python_for_ML_warm_up.ipynb`
 
-
-This will bring up our first notebook lesson. Go to the `Kernel` menu and select the kernel for our conda environment `mlenv`.
+This will bring up our first notebook lesson. Go to the menu
+ `Kernel > Change kernel` and select the kernel for our conda environment `mlenv`.
 
 ## About Jupyter notebooks
 
