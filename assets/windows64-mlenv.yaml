@@ -109,6 +109,3 @@ dependencies:
   - winpty=0.4.3=4
   - zeromq=4.3.2=h6538335_2
   - zlib=1.2.11=h2fa13f4_1005
-prefix: C:\Users\arivers\AppData\Local\Continuum\miniconda3\envs\mlenv
-
-
