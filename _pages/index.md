@@ -4,7 +4,7 @@ permalink: /
 header:
   overlay_color: "#444444"
   overlay_image: /assets/images/laura-ockel-1194484-unsplash.png
-excerpt: 'A two day workshop on applying machine learning'
+excerpt: 'A two day workshop on applying machine learning <br> <i class="fab fa-twitter"></i> #usdaufml'
 
 feature_row:
   - image_path: /assets/images/christopher-gower-m_HRfLhgABo-unsplash.jpg
