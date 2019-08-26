@@ -12,7 +12,7 @@ header:
 
 Time | Event | Speaker/facilitator | Lessons
 ---- | ----- | ------------------- | -------
-8:00 | Introductions and Conda setup | Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/01_Python_for_ML_warm_up.ipynb)
+8:00 | Introductions and Conda setup | Adam Rivers | [Lesson](https://usda-ars-gbru.github.io/ml-training-site/setup/)
 8:45 | Python for ML warm up | Brian Stucky | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/01_Python_for_ML_warm_up.ipynb)
 9:30 | Framing ML Problems | Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/02_Framing_ML_problems.ipynb)
 10:15 | Break / Question time |  
