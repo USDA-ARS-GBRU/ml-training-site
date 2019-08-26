@@ -51,7 +51,7 @@ Up to 3 years, Gainesville, FL
 
 # Summary
 
-This position will focus on developing probabilistic Graphical methods like
+This position will focus on developing probabilistic graphical methods like
 Bayesian networks to integrate  metagenomic and metabolomics data. This work has a larger goal of of developing methods to rationally engineer microbial consortia.
 
 For more information contact adam.rivers@usda.gov. [https://tinyecology.com](https://tinyecology.com)
