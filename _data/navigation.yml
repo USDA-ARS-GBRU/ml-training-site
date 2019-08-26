@@ -10,3 +10,5 @@ main:
     url: /travel/
   - title: "People"
     url: /people/
+  - title: "Jobs"
+    url: /jobs/

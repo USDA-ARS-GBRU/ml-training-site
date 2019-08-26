@@ -21,7 +21,7 @@ Time | Event | Speaker/facilitator | Lessons
 1:15 | Reducing loss/ optimization as learning| Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/04_Reducing_loss_optimization_as_learning.ipynb)
 12:00 | Job announcements
 12:10 | Lunch |
-1:30 |Generalization| Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/05_Generalization.ipynb)
+1:30 |Generalization| Dimitri Bourilkov | [Presentation](/ml-training-site/assets/nb-lessons/db190827.pdf)
 2:15 |Training and test Sets| Ravin Poudel | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/06_training_and_datasets.ipynb)
 3:00 | Break / Question time
 3:15 |Feature representation | Adam Rivers |[Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/08_Feature_representation.ipynb)
@@ -38,7 +38,7 @@ Time | Event | Speaker/facilitator | Lessons
 9:30 | Break / Question time | |
 9:45 |Classification metrics| Geraldine Klarenberg | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/11_classification_metrics.ipynb)
 10:15 | Synthesis example | Adam Rivers| [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/07_synthesis_example.ipynb)
-10:45|Tree based methods | Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/12_Tree_based_methods.ipynb), [Presentation](/ml-training-site/assets/nb-lessons/db190827.pdf)
+10:45|Tree based methods | Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/12_Tree_based_methods.ipynb),
 11:30 | Break / Question time   
 11:45|Neural network methods| Gaurav Vaidya | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/13_neural_network_methods.ipynb)
 12:30 | Lunch | |

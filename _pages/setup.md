@@ -16,6 +16,12 @@ privileges on your computer.  We achieve this by using a package manager called
 {: .notice--info}
 
 
+**_Wifi instructions_**<br>
+UF users and Eduroam users should sign into the SSID **"UF"** or **"Eduroam"**.
+USDA users should choose the SSID **"UF Guest"** and open their browsers to [http://www.ufl.edu](http://www.ufl.edu).
+This will bring up the network sign-on screen. [Click here]((https://net-services.ufl.edu/provided-services/wireless/UF-guest-wireless.html)for more connection information.
+{: .notice--primary}
+
 ## Windows 10 instructions
 (modified from Nicholas Dawson's [instructions](https://atmoguy.com/python-for-scientists-install-windows/))
 
