@@ -16,6 +16,12 @@ privileges on your computer.  We achieve this by using a package manager called
 {: .notice--info}
 
 
+**_Wifi instructions_**<br>
+UF users and Eduroam users should sign into the SSID **"UF"** or **"Eduroam"**.
+USDA users should choose the SSID **"UF Guest"** and open their browsers to [http://www.ufl.edu](http://www.ufl.edu).
+This will bring up the network sign-on screen. [Click here]((https://net-services.ufl.edu/provided-services/wireless/UF-guest-wireless.html)for more connection information.
+{: .notice--primary}
+
 ## Windows 10 instructions
 (modified from Nicholas Dawson's [instructions](https://atmoguy.com/python-for-scientists-install-windows/))
 
@@ -200,13 +206,12 @@ Close and reopen your Terminal.  If you see `(base)`at the beginning of your Ter
 
 On Tuesday morning we will set up our conda environment as a class.
 
-Download the this conda environment file [mlenv.yaml](/ml-training-site/assets/mlenv.yaml).
- The file specifies all the conda packages that need to be installed in an isolated
-conda environment names `mlenv`. Open the Terminal and run this conda command
-in the directory with the file:
 
 ```
-conda env create -f mlenv.yaml
+conda env create -n mlenv python=3.7 pandas numpy seaborn jupyter
+conda activate mlenv
+conda install -c https://conda.anaconda.org/biocore scikit-bio
+
 ```
 
 For more information refer to the [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
