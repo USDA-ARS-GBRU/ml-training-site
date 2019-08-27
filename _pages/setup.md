@@ -208,7 +208,7 @@ On Tuesday morning we will set up our conda environment as a class.
 
 
 ```
-conda env create -n mlenv python=3.7 pandas numpy seaborn jupyter
+conda create -n mlenv python=3.7 pandas numpy seaborn jupyter scikit-learn
 conda activate mlenv
 conda install -c https://conda.anaconda.org/biocore scikit-bio
 
