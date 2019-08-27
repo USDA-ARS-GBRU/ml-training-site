@@ -65,7 +65,7 @@ Your Miniconda shell should now be available under the start menu
 
 On Tuesday morning we will set up our conda environment as a class.
 
-Download the this conda environment file [windows64-mlenv.txt](/ml-training-site/assets/windows64-mlenv.txt).
+Download the this conda environment file [windows64-mlenv.txt](/ml-training-site/assets/windows64-mlenv.yaml).
 The file specifies all the conda packages that need to be installed in an isolated
 conda environment named `mlenv`.
 
