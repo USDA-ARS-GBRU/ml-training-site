@@ -16,7 +16,7 @@ Time | Event | Speaker/facilitator | Lessons
 8:45 | Python for ML warm up | Brian Stucky | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/01_Python_for_ML_warm_up.ipynb)
 9:30 | Framing ML Problems | Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/02_Framing_ML_problems.ipynb)
 10:15 | Break / Question time |  
-10:30 | Descending into ML | Gaurav Vaidya | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/03_Decending_into_ML.ipynb)
+10:30 | Descending into ML | Gaurav Vaidya | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/03_Descending_into_ML.ipynb)
 11:15 | Break / Question time |
 1:15 | Reducing loss/ optimization as learning| Adam Rivers | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/04_Reducing_loss_optimization_as_learning.ipynb)
 12:00 | Job announcements
