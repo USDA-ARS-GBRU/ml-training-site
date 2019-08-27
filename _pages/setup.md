@@ -206,13 +206,12 @@ Close and reopen your Terminal.  If you see `(base)`at the beginning of your Ter
 
 On Tuesday morning we will set up our conda environment as a class.
 
-Download the this conda environment file [mlenv.yaml](/ml-training-site/assets/mlenv.yaml).
- The file specifies all the conda packages that need to be installed in an isolated
-conda environment names `mlenv`. Open the Terminal and run this conda command
-in the directory with the file:
 
 ```
-conda env create -f mlenv.yaml
+conda env create -n mlenv python=3.7 pandas numpy seaborn jupyter
+conda activate mlenv
+conda install -c https://conda.anaconda.org/biocore scikit-bio
+
 ```
 
 For more information refer to the [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
