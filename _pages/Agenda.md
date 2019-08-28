@@ -33,8 +33,8 @@ Time | Event | Speaker/facilitator | Lessons
 Time | Event | Speaker/facilitator | Lessons
 ---- | ----- | ------------------- | -------
 8:00| Regularization| Brian Stucky | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/09_Regularization.ipynb)
-8:45| Logistic regression| Geraldine Klarenberg | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/10_logistic_regression.ipynb)
-9:45 | Break / Question time | |
+9:40  | Break / Question time | |
+9:50| Logistic regression| Geraldine Klarenberg | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/10_logistic_regression.ipynb)
 10:45 |Classification metrics| Geraldine Klarenberg | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/11_classification_metrics.ipynb)
 11:30 | Synthesis example | Adam Rivers| [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/07_synthesis_example.ipynb)
 12:10 | Group Picture | |
