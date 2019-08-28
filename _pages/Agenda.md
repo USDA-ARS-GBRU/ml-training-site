@@ -37,7 +37,8 @@ Time | Event | Speaker/facilitator | Lessons
 9:45 | Break / Question time | |
 10:45 |Classification metrics| Geraldine Klarenberg | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/11_classification_metrics.ipynb)
 11:30 | Synthesis example | Adam Rivers| [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/07_synthesis_example.ipynb)
-12:15 | Lunch | |
+12:10 | Group Picture | |
+12:25 | Lunch | |
 1:30|Tree based methods | Dimitri Bourilkov | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/12_Tree_based_methods.ipynb)  
 2:15 |Neural network methods| Gaurav Vaidya | [Lesson](https://nbviewer.jupyter.org/github/USDA-ARS-GBRU/ml-training-site/blob/master/assets/nb-lessons/13_neural_network_methods.ipynb)
 3:15 | Break / Question time
